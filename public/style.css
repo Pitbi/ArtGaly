@@ -1,0 +1,54 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 100px;
+  margin: 0;
+  padding: 20px 0 0 60px;
+}
+
+.header a {
+  text-decoration: none;
+  size: 36px;
+  color: white;
+}
+
+.header h1 {
+  text-shadow: rgba(0, 0, 0, 0.2) 1px 1px, gba(0, 0, 0, 0.2) -1px 1px, gba(0, 0, 0, 0.2) -1px -1px, gba(0, 0, 0, 0.2) 1px -1px; 
+}
+
+.header h1 span {
+}
+
+.container {
+}
+
+.menu-principal {
+  float:right;
+  margin-right: 12%;
+}
+
+.menu-principal ul {
+  display: table;
+  padding: 0;
+}
+.menu-principal ul li {
+  display: table-cell;
+}
+
+.menu-principal ul li a {
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  color: rgba(255, 255, 255, .9); 
+  text-decoration: none;
+  padding: 4px 12px;
+}
+
+.menu-principal ul li:hover {
+  font-weight: bold;
+  padding: 0 25px;
+}
+

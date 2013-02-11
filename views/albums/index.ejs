@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h2>
+    Albums
+    <a href="#newAlbum" data-toggle="modal" class="pull-right btn btn-small" data-target="#newAlbum">
+      Ajouter un album
+    </a>
+  </h2>
+</div>
+
+<ul>
+  <% albums.forEach(function (album) { %>
+    <li><a href="/album/<%= album.id %>"><%= album.name %></a></li>  
+  <% }); %>
+</ul>
+
+
+
+
+ 
+<!-- Modal -->
+<%- partial("albums/_newAlbum") %>
+

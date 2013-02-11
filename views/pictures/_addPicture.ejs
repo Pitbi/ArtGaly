@@ -1,0 +1,34 @@
+<div id="addPicture" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="addPictureLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel"><%= album.name %></h3>
+  </div>
+  <form method="post" action="/album" class="form-horizontal">
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Nom: </label>
+        <div class="controls">
+          <input type="text" value="<%= album.name || '' %>" name="album[name]"></input>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputName">Description: </label>
+        <div class="controls">
+          <textarea name="album[description]"><%= album.description || '' %></textarea>
+        </div>
+      </div>
+      <div class="fileupload fileupload-new" data-provides="fileupload">
+  <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+  <div>
+    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" /></span>
+    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+  </div>
+</div>
+        
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
+      <input class="btn" type="submit" value="Créer">
+    </div>
+  </form> 
+</div>
