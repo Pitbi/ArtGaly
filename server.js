@@ -3,11 +3,11 @@ var mongoose      = require('mongoose');
 
 var viewHelpers = require('./helpers/view_helpers');
 
-var HomeController    = require('./controllers/home');
-var AdminController   = require('./controllers/admin');
-var AlbumsController  = require('./controllers/albums');
-var AlbumController   = require('./controllers/album');
-
+var HomeController      = require('./controllers/home');
+var AdminController     = require('./controllers/admin');
+var AlbumsController    = require('./controllers/albums');
+var AlbumController     = require('./controllers/album');
+var PicturesController  = require('./controllers/pictures');
 
 //Mongo/Mongoose
 
@@ -27,7 +27,7 @@ var server = express.createServer();
 server.configure(function () {
   server.use(express.logger({format: 'dev', stream: process.stdout}));
   server.use(express.static(__dirname + '/public')); // sert les "assets" (fichiers statiques genre html, css, jpg...)
-  server.use(express.bodyParser({uploadDir:'./uploads'}));
+  server.use(express.bodyParser({uploadDir:'./public/uploads'}));
   server.use(express.methodOverride());
 	server.use(express.cookieParser());
   server.use(server.router);
@@ -43,9 +43,10 @@ server.configure(function () {
 //HTTP REQUEST
 
 var routes = {
-  "/": HomeController,
-  "/albums": AlbumsController,
-  "/album/:id": AlbumController
+  "/"           : HomeController,
+  "/albums"     : AlbumsController,
+  "/album/:id"  : AlbumController,
+  "/pictures"   : PicturesController
 };
 
 server.use(function (req, res, next) {
@@ -67,7 +68,6 @@ function findMatchingController(req, res, next) {
       var collection = i.replace("/:id", "")
       var indexOfCollection = path.indexOf(collection);
       if (indexOfCollection == 0) {
-        console.log(routes[i]);
         return routes[i];
       }
     }

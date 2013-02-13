@@ -4,6 +4,8 @@
     <h3 id="myModalLabel"><%= album.name %></h3>
   </div>
   <form method="post" action="/album" class="form-horizontal">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="album[id]" value="<%= album.id %>">
     <div class="modal-body">
       <div class="control-group">
         <label class="control-label" for="inputName">Nom: </label>
@@ -20,7 +22,12 @@
     </div>
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-      <input class="btn" type="submit" value="Créer">
+      <input class="btn" type="submit" value="Modifier">
     </div>
   </form> 
+  <form method="post" action="/album" class="delete-album">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="album[id]" value="<%= album.id %>">
+    <button type="submit" value="Delete points template." class="btn btn-small"><i class="icon-remove"></i></button>
+  </form>
 </div>

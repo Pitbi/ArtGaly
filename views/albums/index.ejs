@@ -1,3 +1,16 @@
+<% if (album.errors) { %>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>Erreur(s) lors de l'ajout d'un album:</h4>
+    <ul>
+      <% for (attribute in album.errors) { %>
+        <li><%= album.errors[attribute].type %></li>
+      <% }; %>
+    </ul>
+    <small>Veuillez réintroduire votre demande avec les données manquantes.</small>
+  </div>
+<% } %>
+
 <div class="page-header">
   <h2>
     Albums
@@ -12,11 +25,7 @@
     <li><a href="/album/<%= album.id %>"><%= album.name %></a></li>  
   <% }); %>
 </ul>
-
-
-
-
  
 <!-- Modal -->
-<%- partial("albums/_newAlbum") %>
+<%- partial("albums/_newAlbum", {album: album}) %>
 
