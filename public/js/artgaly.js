@@ -2,6 +2,14 @@ $(function () {
   $('.carousel').carousel({
     interval: 3000
   });
+  $('#modal-gallery').on('load', function () {
+    var modalData = $(this).data('modal');
+    // modalData.$links is the list of (filtered) element nodes as jQuery object
+    // modalData.img is the img (or canvas) element for the loaded image
+    // modalData.options.index is the index of the current link
+});
+
+  $('#myModal').modal();
   
   $(".delete-album").submit(function(e) {
     var form = this;

@@ -12,24 +12,27 @@ var PicturesController = function(req, res, next) {
   return this;
 };
 
-PicturesController.prototype.GET = function () {
-  var self = this
-
-};
-
 PicturesController.prototype.POST = function () {
   var self = this;
-  async.forEachSeries(self.req.files.pictures, function (uploadedPicture, callback) {
-    Picture.saveUploadedPicture(uploadedPicture, self.req.body.pictures.album, function (err) {
+  if (self.req.files.pictures[1]) {
+    async.forEachSeries(self.req.files.pictures, function (uploadedPicture, callback) {
+      Picture.saveUploadedPicture(uploadedPicture, self.req.body.pictures.album, function (err) {
+        if (err) return callback(err);
+        
+        callback();
+      }); 
+    }, function (err) {
       if (err) return callback(err);
       
-      callback();
-    }); 
-  }, function (err) {
-    if (err) return callback(err);
-    
-    self.res.redirect("/album/" + self.req.body.pictures.album);
-  });
+      self.res.redirect("/album/" + self.req.body.pictures.album);
+    });
+  } else {
+    Picture.saveUploadedPicture(self.req.files.pictures, self.req.body.pictures.album, function (err) {
+      if (err) throw err;
+        
+      self.res.redirect("/album/" + self.req.body.pictures.album);;
+    });  
+  }
 };
 
 

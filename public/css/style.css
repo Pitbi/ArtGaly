@@ -109,16 +109,28 @@ body {
 
 .pic-album-view {
   float: left;
-  height: 128px;
-  width: 128px;
+  height: 150px;
+  width: 150px;
+  border: 1px solid black;
+  padding: 20px 10px;
+  margin: 2px;
+}
+.pic-album-view a {
+  display: block;
 }
 
-.pic-album-view:hover {
-  height: 384px;
-  width: 384px;
+.pic-album-view img {
+  padding: 5px;
+  max-height: 130px;
+  max-width: 130px;
 }
 
 .tools-bar {
   margin-top: 20px;
   float: right;
+}
+
+.modal-gallery {
+  width: auto;
+  max-width: 100%;
 }

@@ -8,6 +8,7 @@ var AdminController     = require('./controllers/admin');
 var AlbumsController    = require('./controllers/albums');
 var AlbumController     = require('./controllers/album');
 var PicturesController  = require('./controllers/pictures');
+var PictureController   = require('./controllers/picture');
 
 //Mongo/Mongoose
 
@@ -46,7 +47,8 @@ var routes = {
   "/"           : HomeController,
   "/albums"     : AlbumsController,
   "/album/:id"  : AlbumController,
-  "/pictures"   : PicturesController
+  "/pictures"   : PicturesController,
+  "/picture/:id": PictureController
 };
 
 server.use(function (req, res, next) {

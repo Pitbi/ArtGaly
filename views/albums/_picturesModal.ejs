@@ -1,0 +1,27 @@
+<div id="modal-gallery" class="modal modal-gallery hide fade">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+      <div class="modal-image">
+      </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i>Précédent</a>
+        <a class="btn btn-primary modal-next">Suivant<i class="icon-arrow-right icon-white"></i></a>
+        <a class="btn btn-success modal-play modal-slideshow" data-slideshow="3000"><i class="icon-play icon-white"></i>Slideshow</a>
+        <a class="btn modal-download" target="_blank"><i class="icon-download"></i>Télécharger</a>
+    </div>
+</div>
+<div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
+  <% album.pictures.forEach(function (picture) { %>
+    <div class="pic-album-view">
+      <a href="<%= picture.path %>" title="<%= picture.name || '' %>" data-gallery="gallery">
+        <a href="/picture/<%= picture.id %>" class="btn btn-small"><i class="icon-pencil pull-left"></i> Modifier</a>
+        <img src="<%= picture.path %>" />
+      </a>
+    </div>
+  <% }); %>
+</div>
+

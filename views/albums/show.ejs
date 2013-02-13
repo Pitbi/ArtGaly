@@ -21,14 +21,8 @@
     </span>
   </h2>
 </div>
+<%- partial ('albums/_picturesModal', {album: album}) %>
 
-<div class="row-fluid">
-<% album.pictures.forEach(function (picture) { %>
-  <div class="pic-album-view">
-    <img src="<%= picture.path %>" />
-  </div>
-<% }); %>
-</div>
 <div class="row-fluid">
   <%- partial ('albums/_addPictureButton', {album: album}) %>
 </div>
