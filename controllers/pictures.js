@@ -21,14 +21,12 @@ PicturesController.prototype.POST = function () {
   var self = this;
   async.forEachSeries(self.req.files.pictures, function (uploadedPicture, callback) {
     Picture.saveUploadedPicture(uploadedPicture, self.req.body.pictures.album, function (err) {
-      if (err)
-        callback(err);
+      if (err) return callback(err);
       
       callback();
     }); 
   }, function (err) {
-    if (err)
-      throw err;
+    if (err) return callback(err);
     
     self.res.redirect("/album/" + self.req.body.pictures.album);
   });

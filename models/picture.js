@@ -23,15 +23,14 @@ Picture.saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albu
   picture.extenstion = picturePathAttribute.extension;
   picture.album      = albumId;
   picture.save(function (err) {
-    if (err) throw err;
-    
-
-        
-      fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputPath, function (err) {
-        if (err) callback(err);
-     Album.addPicture(albumId, picture.id, function (err) {
-      if (err) callback(err);       
-        callback();
+    if (err) return callback(err);
+       
+    fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputPath, function (err) {
+      if (err) return callback(err);
+      
+      Album.addPicture(albumId, picture.id, function (err) {
+       if (err) callback(err);       
+         callback();
       });
     });
   });

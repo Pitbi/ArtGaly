@@ -13,10 +13,11 @@ var Album = mongoose.model("Album", albumSchema);
 
 Album.addPicture = function addPicture(albumId, pictureId, callback) {
   Album.findById(albumId, function (err, album) {
-    if (err) callback(err);
+    if (err) return callback(err);
+    
     album.pictures.push(pictureId);
     album.save(function (err) {
-      if (err) callback(err);
+      if (err) return callback(err);
       
       callback();
     });
