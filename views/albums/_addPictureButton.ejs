@@ -1,0 +1,25 @@
+<div class="tools-bar">
+  <div class="pictures-form-add-button">
+    <a data-toggle="modal" class="btn btn-small action show-pictures-form">
+      Ajouter des photos
+    </a>  
+  </div>
+  <div class="pictures-form">
+    <form method="post" enctype="multipart/form-data" action="/pictures" class="form-horizontal" aria-hidden="true">
+      <input type="hidden" name="pictures[album]" value="<%= album.id %>">
+      <input id="lefile" class="upload-pictures" type="file" style="display:none" name="pictures" multiple="multiple">
+        <div class="input-append">
+          <div class="control-group">
+            <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Browse</a>
+            <input type="submit" class="btn">
+            <a class="action hide-pictures-form btn btn-danger">Retour</a> 
+          </div>
+        </div>
+
+
+    </form>   
+  </div>
+</div>
+<ol class="upload-list-files">
+  
+</ol>

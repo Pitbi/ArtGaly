@@ -21,31 +21,18 @@
     </span>
   </h2>
 </div>
+
 <div class="row-fluid">
-BLA
+<% album.pictures.forEach(function (picture) { %>
+  <div class="pic-album-view">
+    <img src="<%= picture.path %>" />
+  </div>
+<% }); %>
+</div>
+<div class="row-fluid">
+  <%- partial ('albums/_addPictureButton', {album: album}) %>
 </div>
 
-<div class="row-fluid pictures-form-add-button">
-  <a data-toggle="modal" class="btn btn-small action show-pictures-form">
-    Ajouter des photos.
-  </a>  
-</div>
-<div class="pictures-form" aria-hidden="true">
-  <form method="post" enctype="multipart/form-data" action="/pictures" class="form-horizontal" aria-hidden="true">
-    <input type="hidden" name="pictures[album]" value="<%= album.id %>">
-    <input id="lefile" class="upload-pictures" type="file" style="display:none" name="pictures" multiple="multiple">
-      <div class="input-append">
-        <div class="control-group">
-          <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Browse</a>
-          <input type="submit" class="btn">
-          <a class="action hide-pictures-form btn btn-danger">Retour</a> 
-        </div>
-      </div>
-      <ol class="upload-list-files">
-        
-      </ol>
-  </form>   
-</div>
 <!-- Modal -->
 
 <%- partial("albums/_updateAlbum", {album: album}) %>

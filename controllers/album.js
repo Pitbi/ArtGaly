@@ -1,4 +1,4 @@
-var Album = require('../models/album');
+var Album = require("../models/album");
 
 var AlbumController = function(req, res, next) {
   this.req = req;
@@ -9,11 +9,11 @@ var AlbumController = function(req, res, next) {
 AlbumController.prototype.GET = function () {
   var self = this;
   var albumId = /album\/(.*)$/.exec(self.req.url);
-  Album.findById(albumId[1], function (err, album) {
+  Album.findById(albumId[1]).populate("pictures").exec(function (err, album) {
     if (err)
       throw err;
       
-    self.res.render('albums/show', {album: album});
+    self.res.render("albums/show", {album: album});
   });
 };
 
@@ -33,10 +33,10 @@ AlbumController.prototype.PUT = function () {
             throw err;
             
           album.errors = errors;
-          self.res.render('albums/show', {album: album});
+          self.res.render("albums/show", {album: album});
         });
       } else {
-        self.res.redirect('/album/' + album.id);
+        self.res.redirect("/album/" + album.id);
       }
     });
   });

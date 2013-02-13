@@ -1,6 +1,7 @@
-var mongoose = require('mongoose');
-var fs       = require('fs');
+var mongoose = require("mongoose");
+var fs       = require("fs");
 var Schema   = mongoose.Schema;
+var Album    = require("./album");
 
 var pictureSchema = new mongoose.Schema ({
 	name        : String,
@@ -13,21 +14,25 @@ var pictureSchema = new mongoose.Schema ({
 	uploadDate    : {type: Date, default: Date.now}
 });
 
-var Picture = mongoose.model('Picture', pictureSchema);
+var Picture = mongoose.model("Picture", pictureSchema);
 
 Picture.saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId, callback) {
   var picture = new Picture();
   var picturePathAttribute = buildPicturePathAttributes(uploadedPicture, picture.id);
-  picture.path       = picturePathAttribute.outputPath;
+  picture.path       = picturePathAttribute.path;
   picture.extenstion = picturePathAttribute.extension;
   picture.album      = albumId;
   picture.save(function (err) {
     if (err) throw err;
     
-    fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputPath, function (err) {
-      if (err) throw err;
-      
-      callback();
+
+        
+      fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputPath, function (err) {
+        if (err) callback(err);
+     Album.addPicture(albumId, picture.id, function (err) {
+      if (err) callback(err);       
+        callback();
+      });
     });
   });
 };
@@ -36,14 +41,15 @@ module.exports = Picture;
 
 
 function buildPicturePathAttributes(uploadedPicture, pictureId) {
-  var fileName            = uploadedPicture.name; 
+  var fileName            = uploadedPicture.name;
   var parseUploadFileName = /\.(.*)$/.exec(fileName);
   var extension           = parseUploadFileName[1];
   var pathPictureAttributes = {
     uploadPath: uploadedPicture.path,
     fileName  : uploadedPicture.name, 
     extension : extension,
-    outputPath: "./public/user-pics/" + pictureId + "." + extension
+    outputPath: "./public/user-pics/" + pictureId + "." + extension,
+    path      : "/user-pics/" + pictureId + "." + extension
   };
   return pathPictureAttributes;
 };

@@ -32,7 +32,7 @@ $(function () {
       $('.upload-list-files li').remove();
       for (var i = 0; i < files.length; i++) {
         if (files[i].name) {
-          $('.upload-list-files').append($('<li>' + files[i].name + '</li>'));
+          $('.upload-list-files').append($('<li class="alert alert-info">' + files[i].name + '</li>'));
         }
       }
     }
