@@ -19,16 +19,21 @@ AlbumController.prototype.GET = function () {
 
 AlbumController.prototype.PUT = function () {
   var self = this;
-  Album.findById(self.req.body.album.id, function (err, album) {
-    album.name = self.req.body.album.name;
-    album.description = self.req.body.description;
+  var albumAttributes = self.req.body.album;
+  Album.findById(albumAttributes.id, function (err, album) {
+    if (albumAttributes.cover) {
+      album.cover = albumAttributes.cover;
+    } else {
+      album.name = albumAttributes.name;
+      album.description = albumAttributes.description;
+    }
     album.save(function (err) {
       if (err &! album.errors)
         throw err;
       
       if (err) {
         var errors = album.errors;
-        Album.findById(self.req.body.album.id, function (err, album) {
+        Album.findById(albumAttributes.id, function (err, album) {
           if (err)
             throw err;
             
@@ -44,10 +49,12 @@ AlbumController.prototype.PUT = function () {
 
 AlbumController.prototype.DELETE = function () {
   var self = this;
-  Album.findByIdAndRemove(self.req.body.album.id, function (err) {
+  console.log(self.req.body.album.id);
+  Album.findById(self.req.body.album.id, function (err, album) {
     if (err)
       throw err;
     
+    album.remove();
     self.res.redirect('/albums');
   });
 };

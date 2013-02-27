@@ -111,18 +111,25 @@ body {
   float: left;
   height: 150px;
   width: 150px;
-  border: 1px solid black;
   padding: 20px 10px;
   margin: 2px;
 }
 .pic-album-view a {
-  display: block;
 }
 
 .pic-album-view img {
   padding: 5px;
   max-height: 130px;
   max-width: 130px;
+  display: inline;
+}
+
+.picture-link {
+  display: block;
+}
+
+.picture-edit-view {
+  max-width: 320px;
 }
 
 .tools-bar {
@@ -133,4 +140,41 @@ body {
 .modal-gallery {
   width: auto;
   max-width: 100%;
+}
+
+.album-box {
+  width: 210px;
+  height: 210px;
+  float: left;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.album-box a {
+  text-decoration: none;
+}
+
+.portfolio li {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin: 1em;
+  width: 200px;
+  height: 150px;
+  box-shadow: 0px 0px 25px rgba(0,0,0,.3);
+}
+
+.portfolio li span {
+  text-align: left;
+  position: absolute;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  
+  background-size:80px 60px;
+  width: 90px;
+  padding: 5px 15px 7px;
+  z-index: 1;
+  left: -10px;
+  bottom: 10px;
 }

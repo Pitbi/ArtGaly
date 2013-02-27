@@ -19,12 +19,16 @@ J'aime autant la littérature que le dessin et la peinture et j'écris avec la m
 <div class="home-carousel">
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
-      <div class="active item"><img src="http://d1.artquid.fr/art/3/170/240301.2089003464.1.1600m.jpg"></img>
-      </div>
-      <div class="item"><img src="http://d1.artquid.fr/art/3/229/255319.1086296607.1.1600m.jpg"></img>
-      </div>
-      <div class="item"><img src="http://d1.artquid.fr/art/3/162/238303.1204621719.1.1600m.jpg"></img>
-      </div>
+      <% console.log(pictures.length); %>
+      <% for (var i = 0; i < pictures.length; i++) { %>
+        <% if (i == 0) { %>
+          <div class="active item">
+        <% } else { %> 
+          <div class="item">       
+        <% } %>   
+            <img src="<%= pictures[i].path %>"></img>
+          </div>        
+      <% } %>
     </div>
     <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>

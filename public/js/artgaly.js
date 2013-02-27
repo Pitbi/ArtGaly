@@ -4,12 +4,28 @@ $(function () {
   });
   $('#modal-gallery').on('load', function () {
     var modalData = $(this).data('modal');
-    // modalData.$links is the list of (filtered) element nodes as jQuery object
-    // modalData.img is the img (or canvas) element for the loaded image
-    // modalData.options.index is the index of the current link
 });
 
   $('#myModal').modal();
+  
+  $('.news-form').hide();
+  $('.action.show-news-form').click(showNewsForm);
+  function showNewsForm() {
+    $('.news-form').show();
+  }
+  
+  $('.action.hide-news-form').click(hideNewsForm);
+  function hideNewsForm() {
+    $('.news-form').hide();
+  }  
+  
+  $('.action.add-news-element').click(addNewsElement);
+  function addNewsElement() {
+    var list = $('.news-elements');
+    var field = list.find('.news-element:first').clone();
+    $('.news-elements').append(field);
+  }
+  
   
   $(".delete-album").submit(function(e) {
     var form = this;
@@ -23,6 +39,7 @@ $(function () {
   $('.pictures-form').hide();
   $('.action.show-pictures-form').click(showPicturesForm);
   $('.action.hide-pictures-form').click(hidePicturesForm);
+  
   
   function showPicturesForm() {
     $('.pictures-form').show();
@@ -45,5 +62,4 @@ $(function () {
       }
     }
   );
-   
 });

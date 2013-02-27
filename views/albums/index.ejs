@@ -20,12 +20,19 @@
   </h2>
 </div>
 
-<ul>
-  <% albums.forEach(function (album) { %>
-    <li><a href="/album/<%= album.id %>"><%= album.name %></a></li>  
-  <% }); %>
-</ul>
- 
+
+<% albums.forEach(function (album) { %>
+  <div class="album-box">
+    <a href="/album/<%= album.id %>">
+      <% if (album.cover) { %>
+        <img src="<%= album.cover.pathLittleSize %>">
+      <% } %>
+      <%= album.name %>
+      <small>(<%= album.pictures.length %> photos)</small>
+    </a>
+  </div>  
+<% }); %>
+
 <!-- Modal -->
 <%- partial("albums/_newAlbum", {album: album}) %>
 

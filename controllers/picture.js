@@ -1,6 +1,6 @@
-var mongoose        = require('mongoose');
-var Album           = require('../models/album');
-var Picture         = require('../models/picture');
+var mongoose        = require("mongoose");
+var Album           = require("../models/album");
+var Picture         = require("../models/picture");
 
 var PictureController = function(req, res, next) {
   this.res = res;
@@ -19,9 +19,16 @@ PictureController.prototype.GET = function () {
   })
 };
 
-PictureController.prototype.POST = function () {
-  var self = this
-
+PictureController.prototype.PUT = function () {
+  var self = this;
+  var pictureAttributes = self.req.body.picture;
+  if (!pictureAttributes.homePage) {
+    pictureAttributes.homePage = false;
+  }
+  console.log(pictureAttributes);
+  Picture.findByIdAndUpdate(pictureAttributes.id, pictureAttributes, function (err, picture) {
+    self.res.redirect("/picture/" + pictureAttributes.id);
+  });
 };
 
 module.exports = PictureController;

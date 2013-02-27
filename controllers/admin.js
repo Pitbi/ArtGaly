@@ -1,10 +1,18 @@
-var Album = require('../models/album');
+var Album = require("../models/album");
+var Picture = require("../models/picture");
 
-var AdminController = {}
+var AdminController = function(req, res, next) {
+  this.req = req;
+  this.res = res;
+  return this;
+};
 
-AdminController.index = function (req, res) {
-  Album.find().exec(function (err, albums) {
-    res.render('admin/index', {albums: albums});
+AdminController.prototype.GET = function (req, res) {
+  var self = this;
+  Album.find().populate("cover").exec(function (err, albums) {
+    Picture.find().exec(function (err, pictures) {
+      self.res.render("admin/index", {albums: albums, pictures: pictures});
+    });
   });
 };
 

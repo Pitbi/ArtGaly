@@ -20,7 +20,14 @@
       </a>
     </span>
   </h2>
-</div>
+</div>  
+    <ul class="portfolio">
+      <% album.pictures.forEach(function (picture) { %>
+        <li><img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" /><span>TOZ</span></li>
+      <% }); %>
+    </ul>
+
+<p><%= album.description %></p>
 <%- partial ('albums/_picturesModal', {album: album}) %>
 
 <div class="row-fluid">

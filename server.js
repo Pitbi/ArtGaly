@@ -1,14 +1,17 @@
-var express       = require('express');
-var mongoose      = require('mongoose');
+var express       = require("express");
+var mongoose      = require("mongoose");
 
-var viewHelpers = require('./helpers/view_helpers');
+var viewHelpers = require("./helpers/view_helpers");
 
-var HomeController      = require('./controllers/home');
-var AdminController     = require('./controllers/admin');
-var AlbumsController    = require('./controllers/albums');
-var AlbumController     = require('./controllers/album');
-var PicturesController  = require('./controllers/pictures');
-var PictureController   = require('./controllers/picture');
+var HomeController      = require("./controllers/home");
+var AdminController     = require("./controllers/admin");
+var AlbumsController    = require("./controllers/albums");
+var AlbumController     = require("./controllers/album");
+var PicturesController  = require("./controllers/pictures");
+var PictureController   = require("./controllers/picture");
+var NewsController      = require("./controllers/news");
+var NewController       = require("./controllers/new");
+var BooksController     = require("./controllers/books");
 
 //Mongo/Mongoose
 
@@ -18,24 +21,24 @@ mongoose.connect(mongoUri, function(error) {
 	if (error) { throw error; }
 });
 
-var Album = require('./models/album');
-var Picture = require('./models/picture');
+var Album = require("./models/album");
+var Picture = require("./models/picture");
 
 //SERVER
 
 var server = express.createServer();
 
 server.configure(function () {
-  server.use(express.logger({format: 'dev', stream: process.stdout}));
-  server.use(express.static(__dirname + '/public')); // sert les "assets" (fichiers statiques genre html, css, jpg...)
-  server.use(express.bodyParser({uploadDir:'./public/uploads'}));
+  server.use(express.logger({format: "dev", stream: process.stdout}));
+  server.use(express.static(__dirname + "/public")); // sert les "assets" (fichiers statiques genre html, css, jpg...)
+  server.use(express.bodyParser());
   server.use(express.methodOverride());
 	server.use(express.cookieParser());
   server.use(server.router);
-  server.set('view engine', 'ejs');
-  //server.set('views', __dirname + '/app/views');
-  server.set('view options', {
-    layout: 'layouts/application'
+  server.set("view engine", "ejs");
+  //server.set("views", __dirname + "/app/views");
+  server.set("view options", {
+    layout: "layouts/application"
   });
   server.dynamicHelpers(viewHelpers);
 });
@@ -48,7 +51,10 @@ var routes = {
   "/albums"     : AlbumsController,
   "/album/:id"  : AlbumController,
   "/pictures"   : PicturesController,
-  "/picture/:id": PictureController
+  "/picture/:id": PictureController,
+  "/admin"      : AdminController,
+  "/news"       : NewsController,
+  "/books"      : BooksController
 };
 
 server.use(function (req, res, next) {

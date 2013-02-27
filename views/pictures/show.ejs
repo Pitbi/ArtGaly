@@ -1,1 +1,43 @@
-TOZ
+<div class="page-header">
+  <h3><%= picture.name || "" %></h3>
+</div>
+<div class="row-fluid">  
+  <div class="span5">
+    <form method="post" action="/picture" class="form-horizontal">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="picture[id]" value="<%= picture.id %>">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Nom: </label>
+        <div class="controls">
+          <input type="text" value="<%= picture.name || '' %>" name="picture[name]"></input>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputName">Description: </label>
+        <div class="controls">
+          <textarea name="picture[description]"><%= picture.description || '' %></textarea>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputName">Page d'acceuil: </label>
+        <div class="controls">
+         <input type="checkbox" name="picture[homePage]" 
+         <% if (picture.homePage) { %>
+          checked
+         <% } %>    
+         value="true">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="inputName">Date de création: </label>
+        <div class="controls">
+          <input type="date" value="<%= parseRecordFormDate(picture.creationDate) %>" name="picture[creationDate]"><small>(mois/jour/année)</small>
+        </div>
+      </div>
+      <input class="btn" type="submit" value="Modifier">
+    </form> 
+  </div>
+  <div class="offset1 span6">
+    <img src="<%= picture.path %>" class="picture-edit-view">
+  </div>
+</div>

@@ -17,10 +17,24 @@
 <div id="gallery" data-toggle="modal-gallery" data-target="#modal-gallery">
   <% album.pictures.forEach(function (picture) { %>
     <div class="pic-album-view">
-      <a href="<%= picture.path %>" title="<%= picture.name || '' %>" data-gallery="gallery">
-        <a href="/picture/<%= picture.id %>" class="btn btn-small"><i class="icon-pencil pull-left"></i> Modifier</a>
+      
+
+        <% if (picture.id == album.cover) { %>
+          <img src="/pics/favoris_active.png">
+        <% } else { %>
+          <form method="post" action="/album" class="form-horizontal">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="album[cover]" value="<%= picture.id %>">
+            <input type="hidden" name="album[id]" value="<%= picture.album %>">
+            <input type="image" name="submit" src="/pics/favoris_noActive.png"></input>
+          </form>
+        <% } %>
+      <a href="<%= picture.path %>" title="<%= picture.name || '' %>" data-gallery="gallery" class="picture-link">
         <img src="<%= picture.path %>" />
       </a>
+      <a href="/picture/<%= picture.id %>" class="btn edit-picture-button  pull-right">
+        <i class="icon-pencil"></i>
+      </a>     
     </div>
   <% }); %>
 </div>
