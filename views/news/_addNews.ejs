@@ -1,0 +1,28 @@
+<div class="row-fluid">
+  <div class="news-form">
+    <button class="btn action add-news-element">Ajouter un élément</button>
+
+    <form method="post" action="/news" class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Titre:</label>
+        <div class="controls">
+          <input type="text" value="<%= news.title || '' %>" name="news[title]"></input>
+        </div>
+      </div>
+      <div class="news-elements">
+        <div class="control-group news-element">
+          <label class="control-label" for="inputName">News:</label>
+          <div class="controls">
+            <input type="text" value="<%= news.title || '' %>" name="news[elements][]"></input>
+          </div>
+        </div>    
+      </div>
+      <div class="input-append">
+        <div class="control-group">
+          <input class="btn" type="submit" value="Créer">
+          <a class="action hide-news-form btn btn-danger">Retour</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

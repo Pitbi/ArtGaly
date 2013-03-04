@@ -11,7 +11,7 @@ var PictureController = function(req, res, next) {
 PictureController.prototype.GET = function () {
   var self = this;
   var pictureId = /picture\/(.*)$/.exec(self.req.url);
-  Picture.findById(pictureId[1]).populate("pictures").exec(function (err, picture) {
+  Picture.findById(pictureId[1]).populate("album").exec(function (err, picture) {
     if (err)
       throw err;
       

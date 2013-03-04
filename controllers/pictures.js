@@ -36,6 +36,12 @@ PicturesController.prototype.POST = function () {
   }
 };
 
+PicturesController.prototype.DELETE = function () {
+  var self = this;
+  var pictures = self.req.body;
+  console.log(self.req.body);
+};
+
 
 
 module.exports = PicturesController;

@@ -1,0 +1,33 @@
+<div class="edit-picture-form">
+  <form method="post" action="/picture" class="form-inline">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="picture[id]" value="<%= picture.id %>">
+    <div class="control-group">
+      <label class="control-label" for="inputName">Nom: </label>
+        <input type="text" value="<%= picture.name || '' %>" name="picture[name]"></input>
+      <label class="control-label" for="inputName">Date de création: </label>
+      <input type="date" value="<%= parseRecordFormDate(picture.creationDate) %>" name="picture[creationDate]"><small>(mois/jour/année)</small>
+      <div class="controls">
+        <label class="control-label" for="inputName">Page d'acceuil: </label>
+        <input type="checkbox" name="picture[homePage]" value="true"
+         <% if (picture.homePage) { %>
+           checked
+         <% } %>
+        >
+        <label class="control-label" for="inputName">A vendre: </label>
+        <input type="checkbox" name="picture[toSale]" value="true"
+         <% if (picture.toSale) { %>
+           checked
+         <% } %>
+        >
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputName">Description: </label>
+      <div class="controls">
+        <textarea name="picture[description]"><%= picture.description || '' %></textarea>
+        <input class="btn pull-right" type="submit" value="Modifier">
+      </div>
+    </div>
+  </form>
+</div> 

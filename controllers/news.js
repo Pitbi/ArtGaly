@@ -9,7 +9,7 @@ var NewsController = function(req, res, next) {
 
 NewsController.prototype.GET = function () {
   var self = this;
-  News.find(function (err, news) {
+  News.find().sort({date: -1}).exec(function (err, news) {
     if (err) throw err;
     
     self.res.render("news/index", {news: news});

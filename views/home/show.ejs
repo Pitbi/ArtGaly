@@ -19,14 +19,13 @@ J'aime autant la littérature que le dessin et la peinture et j'écris avec la m
 <div class="home-carousel">
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
-      <% console.log(pictures.length); %>
       <% for (var i = 0; i < pictures.length; i++) { %>
         <% if (i == 0) { %>
           <div class="active item">
         <% } else { %> 
           <div class="item">       
         <% } %>   
-            <img src="<%= pictures[i].path %>"></img>
+            <img src="<%= pictures[i].pathLittleSize %>"></img>
           </div>        
       <% } %>
     </div>

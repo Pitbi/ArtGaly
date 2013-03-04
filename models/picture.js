@@ -6,6 +6,14 @@ var im       = require("imagemagick");
 var Album    = require("./album");
 
 var Schema   = mongoose.Schema;
+
+var commentsSchema = Schema({
+  sender     : String,
+  senderMail : String,
+  message    : String,
+  date       : {type: Date, default: Date.now} 
+});
+
 var pictureSchema = new Schema ({
 	name            : String,
 	homePage        : Boolean,
@@ -15,7 +23,9 @@ var pictureSchema = new Schema ({
 	album           : {type: Schema.ObjectId, ref: "Album"},
 	description     : String,
 	creationDate    : Date,
-	uploadDate      : {type: Date, default: Date.now}
+  toSale          : Boolean,
+	uploadDate      : {type: Date, default: Date.now},
+  comments        : [commentsSchema]
 });
 
 var Picture = mongoose.model("Picture", pictureSchema);

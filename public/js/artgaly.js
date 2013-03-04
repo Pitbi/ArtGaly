@@ -4,7 +4,7 @@ $(function () {
   });
   $('#modal-gallery').on('load', function () {
     var modalData = $(this).data('modal');
-});
+  });
 
   $('#myModal').modal();
   
@@ -35,22 +35,46 @@ $(function () {
     });
     return false;
   });
-  
-  $('.pictures-form').hide();
-  $('.action.show-pictures-form').click(showPicturesForm);
-  $('.action.hide-pictures-form').click(hidePicturesForm);
-  
-  
-  function showPicturesForm() {
-    $('.pictures-form').show();
-    $('.pictures-form-add-button').hide();
+
+  $('.upload-pictures-form').hide();
+  $('.action.show-upload-pictures-form').click(showUploadPictureForm);
+  $('.action.hide-upload-pictures-form').click(hideUploadPictureForm);
+  function showUploadPictureForm() {
+    $('.upload-pictures-form').show();
+    $('.action.show-upload-pictures-form').hide();
+  }
+  function hideUploadPictureForm() {
+    $('.upload-pictures-form').hide();
+    $('.action.show-upload-pictures-form').show();
   }
   
-  function hidePicturesForm() {
-    $('.pictures-form').hide();
-    $('.pictures-form-add-button').show();
+  $('.edit-picture-form').hide();
+  $('.hide-edit-picture-form').hide();
+  $('.action.show-edit-picture-form').click(showEditPictureForm);
+  $('.action.hide-edit-picture-form').click(hideEditPictureForm);
+  function showEditPictureForm() {
+    $('.edit-picture-form').show();
+    $('.hide-edit-picture-form').show();
+    $('.show-edit-picture-form').hide();
   }
-  
+  function hideEditPictureForm() {
+    $('.edit-picture-form').hide();
+    $('.hide-edit-picture-form').hide();
+    $('.show-edit-picture-form').show();
+  }
+
+  $('.add-comment').hide();
+  $('.action.show-comment-form').click(showCommentForm);
+  $('.action.hide-comment-form').click(hideCommentForm);
+  function showCommentForm() {
+    $('.add-comment').show();
+    $('.show-comment-form').hide();
+  }
+  function hideCommentForm() {
+    $('.add-comment').hide();
+    $('.show-comment-form').show();
+  }
+
   $('input:file[multiple]').change(
     function() {
       var files = $('.upload-pictures').get(0).files;

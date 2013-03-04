@@ -12,13 +12,14 @@ var PictureController   = require("./controllers/picture");
 var NewsController      = require("./controllers/news");
 var NewController       = require("./controllers/new");
 var BooksController     = require("./controllers/books");
+var CommentsController  = require("./controllers/comments")
 
 //Mongo/Mongoose
 
 var mongoUri = process.env.MONGO_URI || "mongodb://localhost/artgaly";
 
 mongoose.connect(mongoUri, function(error) {
-	if (error) { throw error; }
+  if (error) { throw error; }
 });
 
 var Album = require("./models/album");
@@ -43,7 +44,6 @@ server.configure(function () {
   server.dynamicHelpers(viewHelpers);
 });
 
-
 //HTTP REQUEST
 
 var routes = {
@@ -54,7 +54,8 @@ var routes = {
   "/picture/:id": PictureController,
   "/admin"      : AdminController,
   "/news"       : NewsController,
-  "/books"      : BooksController
+  "/books"      : BooksController,
+  "/comments"   : CommentsController
 };
 
 server.use(function (req, res, next) {

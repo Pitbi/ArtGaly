@@ -10,8 +10,8 @@ var saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId,
   im.crop({
     srcPath: picturePathAttribute.uploadPath,
     dstPath: picturePathAttribute.outputLittleSizePath,
-    width: 200,
-    height: 150,
+    width: 190,
+    height: 135,
     quality: 1,
     gravity: "North"
   }, function(err, stdout, stderr){

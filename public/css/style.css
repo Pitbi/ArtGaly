@@ -3,15 +3,20 @@ body {
   padding: 0;
 }
 
+body {
+  background: url(http://d0.artquid.fr/art/4/103/288766.432111448.1.1600m.jpg);
+  background-size: 100% 100%;
+  background-attachment: fixed
+}
+
 .container {
   margin-bottom: 20px;
-  border-radius: 10px; -moz-border-radius: 10px;-webkit-border-radius: 10px;
+  border-radius: 6px; -moz-border-radius: 6px;-webkit-border-radius: 6px;
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .header {
-  background: url(/pics/header.png);
   height: 100px;
   margin: 0;
   padding: 20px 0 0 60px;
@@ -28,9 +33,6 @@ body {
 }
 
 .header h1 span {
-}
-
-.container {
 }
 
 .menu-principal {
@@ -128,8 +130,48 @@ body {
   display: block;
 }
 
-.picture-edit-view {
-  max-width: 320px;
+.picture-view {
+  text-align: center;
+  padding: 10px 10px;
+  margin: 15px 15px;
+}
+
+.picture-view img {
+  max-height: 400px;
+  box-shadow: 0px 0px 25px rgba(0,0,0,.3);
+}
+
+.picture-description {
+  margin: auto;
+  padding: 10px 10px;
+  display: inline-block;
+}
+
+.comment {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(135, 135, 135, 0.2);
+  margin: 20px;
+  padding: 8px;
+}
+
+.add-comment textarea {
+  width: 640px;
+  height: 120px;
+  resize: none;
+}
+
+.add-comment input {
+  width: 640px;
+}
+
+.image-move-button {
+  font-size: 48px;
+  text-decoration: none;
+  margin-top: 200px;
+}
+
+.image-move-button a {
+  text-decoration: none;
 }
 
 .tools-bar {
@@ -160,8 +202,8 @@ body {
   position: relative;
   vertical-align: top;
   margin: 1em;
-  width: 200px;
-  height: 150px;
+  width: 190px;
+  height: 135px;
   box-shadow: 0px 0px 25px rgba(0,0,0,.3);
 }
 
@@ -170,11 +212,42 @@ body {
   position: absolute;
   color: #fff;
   background: rgba(0,0,0,0.6);
-  
-  background-size:80px 60px;
-  width: 90px;
+  width: 120px;
   padding: 5px 15px 7px;
   z-index: 1;
   left: -10px;
   bottom: 10px;
+}
+
+.portfolio li a.edit-picture {
+  position: absolute;
+  opacity:0.85;
+  filter:alpha(opacity=85);
+}
+
+.portfolio-cover {
+  top: -23px;
+  position: absolute;
+}
+
+.edit-picture-form {
+  background-color: rgba(113, 120, 119, 0.1);
+  padding: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  margin: 15px 0;
+  box-shadow: 2px 2px 3px rgba(113, 120, 119, 0.6);
+
+}
+
+.edit-picture-form textarea{
+  width: 640px;
+  height: 120px;
+  resize: none;
+}
+
+.news-list li {
+  margin-left: 12px;
 }

@@ -22,7 +22,7 @@ AlbumsController.prototype.POST = function () {
       throw err;
     
     if (err) {
-      Album.find(function (err, albums) {
+      Album.find().populate('cover').exec(function (err, albums) {
         if (err)
           throw err;
           

@@ -21,14 +21,37 @@
     </span>
   </h2>
 </div>  
-    <ul class="portfolio">
-      <% album.pictures.forEach(function (picture) { %>
-        <li><img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" /><span>TOZ</span></li>
-      <% }); %>
-    </ul>
 
 <p><%= album.description %></p>
-<%- partial ('albums/_picturesModal', {album: album}) %>
+
+<ul class="portfolio">
+  <% album.pictures.forEach(function (picture) { %>
+    <li>
+      <div class="portfolio-cover">
+        <% if (picture.id == album.cover) { %>
+            <img src="/pics/favoris_active.png">
+        <% } else { %>
+          <form method="post" action="/album" class="form-horizontal">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="album[cover]" value="<%= picture.id %>">
+            <input type="hidden" name="album[id]" value="<%= picture.album %>">
+            <input type="image" name="submit" src="/pics/favoris_noActive.png"></input>
+          </form>
+        <% } %>
+      </div>
+      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
+        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
+      </a>
+      <% if (picture.name) { %>
+        <span><%= picture.name %></span>
+      <% } %>
+    </li>
+  <% }); %>
+</ul>
+       
+
+
+     
 
 <div class="row-fluid">
   <%- partial ('albums/_addPictureButton', {album: album}) %>
