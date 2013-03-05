@@ -230,7 +230,7 @@ body {
   position: absolute;
 }
 
-.edit-picture-form {
+.hided-form, .hided-form2 {
   background-color: rgba(113, 120, 119, 0.1);
   padding: 15px;
   border: 1px solid rgba(0, 0, 0, 0.2);
@@ -242,7 +242,7 @@ body {
 
 }
 
-.edit-picture-form textarea{
+.hided-form textarea{
   width: 640px;
   height: 120px;
   resize: none;

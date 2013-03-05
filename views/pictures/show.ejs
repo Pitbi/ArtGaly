@@ -8,21 +8,14 @@
         <%= parseDate(picture.creationDate) %>
       <% } %>
     </small>
-    <a class="btn btn-small pull-right action show-edit-picture-form">
+    <a class="action show-form-btn btn btn-small pull-right">
       Modifier la photo
-    </a>
-    <a class="btn btn-small btn-danger pull-right action hide-edit-picture-form">
-      Annuler
     </a>
   </h3>
 </div>
-<div class="row-fluid">
-  <%- partial ("./_editPicture", {picture: picture}) %>
-</div>
-<div class="row-fluid">
-  
-   
-</div>
+
+<%- partial ("./_editPicture", {picture: picture}) %>
+
 <div class="picture-description">
   <% if (picture.description) { %>
     <h4>Description:</h4>
@@ -52,38 +45,4 @@
   </div>
 </div>
 
-<div class="row-fluid">
-  <a class="btn action show-comment-form">Ajouter un commentaire</a>
-  <form method="post" action="/comments" class="form-inline add-comment">
-    <input type="hidden" name="comment[picture]" value="<%= picture.id %>">
-    <div class="control-group">
-      <div class="controls">
-        <input type="text" value="" name="comment[sender]" placeholder="Votre nom..."></input>
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <input type="text" value="" name="comment[senderMail]" placeholder="Votre email... (facultatif)."></input>
-      </div>
-      <div class="controls">
-        <small><i>Seul le webmaster aura accès à votre mail.</i></small>
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-        <textarea name="comment[message]" placeholder="Message"></textarea>
-      </div>
-    </div>
-    <div class="control-group">
-        <input type="submit" value="envoyer" class="btn"></input><a class="action hide-comment-form btn btn-danger">Annuler</a>
-    </div>
-  </form> 
-</div>
-
-<% picture.comments.forEach(function (comment) { %>
-  <div class="comment">
-    <h5><%= comment.sender %> <small><%= parseDate(comment.date) %> - <%= comment.senderMail %></small></h5>
-    <p><%= comment.message %></p>
-  </div>
-   
-<% }); %>
+<%- partial ("./_comments", {picture: picture}) %>

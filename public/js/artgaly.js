@@ -8,17 +8,6 @@ $(function () {
 
   $('#myModal').modal();
   
-  $('.news-form').hide();
-  $('.action.show-news-form').click(showNewsForm);
-  function showNewsForm() {
-    $('.news-form').show();
-  }
-  
-  $('.action.hide-news-form').click(hideNewsForm);
-  function hideNewsForm() {
-    $('.news-form').hide();
-  }  
-  
   $('.action.add-news-element').click(addNewsElement);
   function addNewsElement() {
     var list = $('.news-elements');
@@ -36,43 +25,29 @@ $(function () {
     return false;
   });
 
-  $('.upload-pictures-form').hide();
-  $('.action.show-upload-pictures-form').click(showUploadPictureForm);
-  $('.action.hide-upload-pictures-form').click(hideUploadPictureForm);
-  function showUploadPictureForm() {
-    $('.upload-pictures-form').show();
-    $('.action.show-upload-pictures-form').hide();
+
+  $('.hided-form').hide();
+  $('.action.show-form-btn').click(showForm);
+  $('.action.hide-form-btn').click(hideForm);
+  function showForm() {
+    $('.hided-form').show();
+    $('.show-form-btn').hide();
   }
-  function hideUploadPictureForm() {
-    $('.upload-pictures-form').hide();
-    $('.action.show-upload-pictures-form').show();
-  }
-  
-  $('.edit-picture-form').hide();
-  $('.hide-edit-picture-form').hide();
-  $('.action.show-edit-picture-form').click(showEditPictureForm);
-  $('.action.hide-edit-picture-form').click(hideEditPictureForm);
-  function showEditPictureForm() {
-    $('.edit-picture-form').show();
-    $('.hide-edit-picture-form').show();
-    $('.show-edit-picture-form').hide();
-  }
-  function hideEditPictureForm() {
-    $('.edit-picture-form').hide();
-    $('.hide-edit-picture-form').hide();
-    $('.show-edit-picture-form').show();
+  function hideForm() {
+    $('.hided-form').hide();
+    $('.show-form-btn').show();  
   }
 
-  $('.add-comment').hide();
-  $('.action.show-comment-form').click(showCommentForm);
-  $('.action.hide-comment-form').click(hideCommentForm);
-  function showCommentForm() {
-    $('.add-comment').show();
-    $('.show-comment-form').hide();
+  $('.hided-form2').hide();
+  $('.action.show-form-btn2').click(showForm2);
+  $('.action.hide-form-btn2').click(hideForm2);
+  function showForm2() {
+    $('.hided-form2').show();
+    $('.show-form-btn2').hide();
   }
-  function hideCommentForm() {
-    $('.add-comment').hide();
-    $('.show-comment-form').show();
+  function hideForm2() {
+    $('.hided-form2').hide();
+    $('.show-form-btn2').show();  
   }
 
   $('input:file[multiple]').change(
@@ -87,3 +62,7 @@ $(function () {
     }
   );
 });
+
+function showForms(formClass) {
+
+};

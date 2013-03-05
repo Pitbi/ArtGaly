@@ -15,12 +15,14 @@
   <h2>
     <%= album.name %>
     <span class="pull-right">
-      <a href="#updateAlbum" data-toggle="modal" class="btn btn-small">
+      <a class="btn btn-small action show-form-btn">
         Modifier l'album
       </a>
     </span>
   </h2>
 </div>  
+
+<%- partial("albums/_editAlbum", {album: album}) %>
 
 <p><%= album.description %></p>
 
@@ -57,6 +59,3 @@
   <%- partial ('albums/_addPictureButton', {album: album}) %>
 </div>
 
-<!-- Modal -->
-
-<%- partial("albums/_updateAlbum", {album: album}) %>
