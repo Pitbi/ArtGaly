@@ -251,3 +251,14 @@ body {
 .news-list li {
   margin-left: 12px;
 }
+
+.pdf-preview {
+  width: 700px;
+  height: 320px;
+  float: left;
+  margin: auto;
+}
+
+#pdf {
+  height: 800px;
+}

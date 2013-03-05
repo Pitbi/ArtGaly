@@ -62,7 +62,3 @@ $(function () {
     }
   );
 });
-
-function showForms(formClass) {
-
-};
