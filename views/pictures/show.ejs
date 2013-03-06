@@ -1,4 +1,5 @@
-<% var currentPictures = getIndexOfPictureInAlbum(picture); %> 
+<% var currentPictures = getIndexOfPictureInAlbum(picture); %>
+<% var pictures = album.pictures %> 
 
 <div class="page-header">
   <h3>
@@ -44,5 +45,18 @@
     </span> 
   </div>
 </div>
+
+
+<div class="rox-fluid">
+  <ul id="carousel" class="elastislide-list">
+    <% for (var i = 0; i < pictures.length; i++) { %>
+      <li>
+        <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathLittleSize %>" alt="image<%= i %>" /></a>
+      </li>
+    <% }; %>
+  </ul>
+</div>
+
+
 
 <%- partial ("./_comments", {picture: picture}) %>

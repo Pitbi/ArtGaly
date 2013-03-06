@@ -14,9 +14,14 @@ PictureController.prototype.GET = function () {
   Picture.findById(pictureId[1]).populate("album").exec(function (err, picture) {
     if (err)
       throw err;
-      
-    self.res.render("pictures/show", {picture: picture});
-  })
+    
+    Album.findById(picture.album.id).populate("pictures").exec(function (err, album) {    
+    if (err)
+      throw err;
+    
+      self.res.render("pictures/show", {picture: picture, album:album});
+    });  
+  });
 };
 
 PictureController.prototype.PUT = function () {

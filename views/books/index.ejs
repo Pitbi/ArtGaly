@@ -12,11 +12,9 @@
 </div>
 
 <% books.forEach(function (book) { %>
-	<a href="/book/<%= book.id %>">
-		<div class="book-cover">
-			<div class="book-cover-title">
-					<span><%= book.name %></span>
-			</div>
+	<a href="<%= book.path %>" class="book-cover">
+		<div class="book-cover-title">
+			<span><%= book.name %></span>
 		</div>
 	</a>
 <% }); %>

@@ -1,7 +1,4 @@
 $(function () {
-  $('.carousel').carousel({
-    interval: 3000
-  });
   $('#modal-gallery').on('load', function () {
     var modalData = $(this).data('modal');
   });
@@ -25,6 +22,10 @@ $(function () {
     return false;
   });
 
+  $('#carousel').elastislide();
+  $( '#carousel-vertical' ).elastislide( {
+        orientation : 'vertical'
+  } );
 
   $('.hided-form').hide();
   $('.action.show-form-btn').click(showForm);
