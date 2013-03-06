@@ -27,12 +27,14 @@ PicturesController.prototype.POST = function () {
       
       self.res.redirect("/album/" + self.req.body.pictures.album);
     });
-  } else {
+  } else if (self.req.files.pictures[0]) {
     saveUploadedPicture(self.req.files.pictures, self.req.body.pictures.album, function(err) {
       if (err) throw err;
         
       self.res.redirect("/album/" + self.req.body.pictures.album);
     });
+  } else {
+    self.res.redirect('back');
   }
 };
 

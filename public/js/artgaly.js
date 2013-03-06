@@ -2,12 +2,6 @@ $(function () {
   $('.carousel').carousel({
     interval: 4000
   });
-
-  $('#modal-gallery').on('load', function () {
-    var modalData = $(this).data('modal');
-  });
-
-  $('#myModal').modal();
   
   $('.action.add-news-element').click(addNewsElement);
   function addNewsElement() {
@@ -15,7 +9,7 @@ $(function () {
     var field = list.find('.news-element:first').clone();
     $('.news-elements').append(field);
   }
-  
+
   
   $(".delete-album").submit(function(e) {
     var form = this;
