@@ -9,9 +9,9 @@ lib-cov
 
 pids
 logs
-public/uploads/
-public/users-pics/
-public/users-books/
+public/uploads
+public/users-pics
+public/users-books
 
 node_modules
 npm-debug.log
