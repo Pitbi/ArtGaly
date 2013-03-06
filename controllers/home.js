@@ -11,7 +11,11 @@ HomeController.prototype.GET = function () {
   Picture.find({homePage: true}, function (err, pictures) {
     if (err) throw err;
     
-    self.res.render("home/show", {pictures: pictures});
+    Picture.find().sort({'uploadDate': 'desc', test: -1}).limit(4).exec(function (err, lastAddedPictures) {
+    	if (err) throw err;
+
+    	self.res.render("home/show", {pictures: pictures, lastAddedPictures: lastAddedPictures});
+    })
   });
 };
 

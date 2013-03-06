@@ -50,9 +50,9 @@ $(function () {
     $('.show-form-btn2').show();  
   }
 
-  $('input:file[multiple]').change(
+  $('input:file').change(
     function() {
-      var files = $('.upload-pictures').get(0).files;
+      var files = $('.upload-files').get(0).files;
       $('.upload-list-files li').remove();
       for (var i = 0; i < files.length; i++) {
         if (files[i].name) {

@@ -12,6 +12,19 @@
 </div>
 
 <% books.forEach(function (book) { %>
+	<a href="/book/<%= book.id %>">
+		<div class="book-cover">
+			<div class="book-cover-title">
+					<span><%= book.name %></span>
+			</div>
+		</div>
+	</a>
+<% }); %>
+
+
+
+<!--
+<% books.forEach(function (book) { %>
 <div id="pdf">
 
 	<div class="pdf-preview">
@@ -19,3 +32,4 @@
 	</div>
 </div>
 <% }); %>
+-->

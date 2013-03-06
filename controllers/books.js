@@ -22,25 +22,11 @@ BooksController.prototype.GET = function () {
 BooksController.prototype.POST = function() {
 	var self = this;
 	var book = new Book();
-	if (self.req.files.books[1]) {
-	    async.forEachSeries(self.req.files.books, function (uploadedPicture, callback) {
-			saveUploadedPdf(uploadedPicture, function(err) {
-				if (err) return callback(err);
+	saveUploadedPdf(self.req.files.books, self.req.body.book, function(err) {
+		if (err) throw err;
 
-				callback();
-			});
-		}, function (err) {
-			if (err) return callback(err);
-
-			self.res.redirect("/books");
-		});
-	} else {
-		saveUploadedPdf(self.req.files.books, function(err) {
-			if (err) throw err;
-
-			self.res.redirect("/books");
-		});
-	}
+		self.res.redirect("/books");
+	});
 }
 
 module.exports = BooksController;

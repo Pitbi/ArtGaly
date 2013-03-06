@@ -1,13 +1,19 @@
 <div class="tools-bar">
   <div class="upload-books-form-add-button">
     <a class="btn btn-small action show-form-btn2">
-      Ajouter des photos
+      Ajouter un livre
     </a>  
   </div>
   <div class="hided-form2">
     <form method="post" enctype="multipart/form-data" action="/books" class="form-horizontal" aria-hidden="true">
       <input type="hidden" name="books[book]" value="<%= book.id %>">
-      <input id="lefile" class="upload-books" type="file" style="display:none" name="books" multiple="multiple" accept="application/pdf">
+      <input id="lefile" class="upload-files" type="file" style="display:none" name="books" accept="application/pdf">
+      <div class="control-group">
+        <label class="control-label" for="inputName">Nom: </label>
+        <div class="controls">
+          <input type="text" value="<%= book.name || '' %>" name="book[name]"></input>
+        </div>
+      </div>
       <div class="input-append">
         <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Browse</a>
         <input type="submit" class="btn">

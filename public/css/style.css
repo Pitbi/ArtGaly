@@ -64,23 +64,30 @@ body {
 
 .home-carousel {
   text-align: center;
-  height: 340px;
   padding: 20px 0;
+  float: left;
+  margin: 12px;
+  background-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 0px 25px rgba(0,0,0,.3);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 #myCarousel {
-  width: 575px;
-  height: 250px;
+  width: 375px;
+  height: 230px;
   margin: auto;
 }
 
 #myCarousel img{
-  width: 475px;
-  height: 250px;
+  max-width: 355px;
+  max-height: 220px;
   margin-left: 50px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  margin: auto;
 }
 
 .carousel-control {
@@ -97,6 +104,10 @@ body {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 }
 
 .upload-list-files {
@@ -191,10 +202,19 @@ body {
   text-align: center;
   font-size: 18px;
   padding: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }
 
 .album-box a {
   text-decoration: none;
+}
+
+.album-box img {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 
 .portfolio li {
@@ -205,6 +225,15 @@ body {
   width: 190px;
   height: 135px;
   box-shadow: 0px 0px 25px rgba(0,0,0,.3);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.portfolio img {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 
 .portfolio li span {
@@ -228,6 +257,19 @@ body {
 .portfolio-cover {
   top: -23px;
   position: absolute;
+}
+
+.little-picture {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin: 10px 0; 
+  width: 190px;
+  height: 135px;
+  box-shadow: 0px 0px 25px rgba(0,0,0,.3);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
 
 .hided-form, .hided-form2 {
@@ -254,11 +296,43 @@ body {
 
 .pdf-preview {
   width: 700px;
-  height: 320px;
+  height: 800px;
   float: left;
   margin: auto;
 }
 
 #pdf {
-  height: 800px;
+}
+
+.book-cover {
+  display: inline-block;
+  height: 300px;
+  width: 200px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.book-cover-title {
+  content: '';
+  top: 0;
+  left: 10px;
+  bottom: 0;
+  width: 5px;
+  background: rgba(0,0,0,0.06);
+  box-shadow: 1px 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.book-cover-title span {
+  display: inline-block;
+  margin-top: 180px;
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 300px;
+  height: 130px;
+  font-size: 25px;
+  padding: 16px 16px;
+  color: white;
 }
