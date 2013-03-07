@@ -8,9 +8,9 @@ var Album    = require("./album");
 var Schema   = mongoose.Schema;
 
 var commentsSchema = Schema({
-  sender     : String,
+  sender     : {type: String, validate: [/^.{3,25}$/, "Votre nom doit contenir minimum 3 charactères et maximum 25."]},
   senderMail : String,
-  message    : String,
+  message    : {type: String, validate: [/^.{3,}$/, "Votre message doit contenir minimum 3 charactères."]},
   date       : {type: Date, default: Date.now} 
 });
 

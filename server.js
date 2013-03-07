@@ -35,6 +35,7 @@ server.configure(function () {
   server.use(express.bodyParser());
   server.use(express.methodOverride());
 	server.use(express.cookieParser());
+  server.use(express.session({secret: "secrettozmozzzzzzzzzzdxzdczdvzdvzdvzs"}));;
   server.use(server.router);
   server.set("view engine", "ejs");
   //server.set("views", __dirname + "/app/views");

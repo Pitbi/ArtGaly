@@ -10,9 +10,9 @@ var saveUploadedBook = function saveUploadedBook(uploadedBook, reqBodyBook, call
 	book.name = reqBodyBook.name;
 
 	book.save(function (err) {
-		if (err) throw err;
+		if (err) return callback(err);
 		fs.rename(uploadedBook.path, outputPath, function (err) {
-			if (err) throw err;
+			if (err) return callback(err);
 
 			callback();
 		});

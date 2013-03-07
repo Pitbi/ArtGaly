@@ -22,11 +22,25 @@ BooksController.prototype.GET = function () {
 BooksController.prototype.POST = function() {
 	var self = this;
 	var book = new Book();
-	saveUploadedPdf(self.req.files.books, self.req.body.book, function(err) {
-		if (err) throw err;
+  if (self.req.files.books) {
+  	saveUploadedPdf(self.req.files.books, self.req.body.book, function(err) {
+  		if (err &! err.errors) throw(err);
 
-		self.res.redirect("/books");
-	});
+      if (err) {
+        var errors = err.errors;
+        Book.find(function (err, books) {
+          if (err) throw err;
+
+          book.errors = errors;
+          self.res.render('books/index', {books: books, book: book});
+        });
+      } else {
+  		  self.res.redirect("/books");
+      }
+  	});
+  } else {
+    res.redirect('back');
+  }
 }
 
 module.exports = BooksController;

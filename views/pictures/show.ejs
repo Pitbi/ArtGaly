@@ -1,6 +1,19 @@
 <% var currentPictures = getIndexOfPictureInAlbum(picture); %>
 <% var pictures = album.pictures %> 
 
+<% if (picture.errors) { %>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>Erreur(s) lors de l'ajout de votre commentaire:</h4>
+    <ul>
+      <% for (attribute in picture.errors) { %>
+        <li><%= picture.errors[attribute].type %></li>
+      <% }; %>
+    </ul>
+    <small>Veuillez réintroduire votre demande avec les données manquantes.</small>
+  </div>
+<% } %>
+
 <div class="page-header">
   <h3>
     <%= picture.name || "Titre non défini" %>
@@ -47,7 +60,8 @@
 </div>
 
 
-<div class="rox-fluid">
+<div class="row-fluid">
+  <h4><a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a>:</h4>
   <ul id="carousel" class="elastislide-list">
     <% for (var i = 0; i < pictures.length; i++) { %>
       <li>

@@ -34,7 +34,7 @@ PicturesController.prototype.POST = function () {
       self.res.redirect("/album/" + self.req.body.pictures.album);
     });
   } else {
-    self.res.redirect('back');
+    self.res.redirect("/album/" + self.req.body.pictures.album);
   }
 };
 

@@ -33,7 +33,7 @@ AlbumController.prototype.PUT = function () {
       
       if (err) {
         var errors = album.errors;
-        Album.findById(albumAttributes.id, function (err, album) {
+        Album.findById(albumAttributes.id).populate("pictures").exec(function (err, album) {
           if (err)
             throw err;
             
