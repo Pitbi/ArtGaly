@@ -19,4 +19,9 @@
       <a class="btn btn-danger action hide-form-btn">Annuler</a>
     </div>
   </form>
+  <form method="post" action="/album" class="delete-album">
+    <input type="hidden" name="album[id]" value="<%= album.id %>"/>
+    <input type="hidden" name="_method" value="delete"/>
+    <button type="submit" value="" class="btn btn-inverse">Supprimer l'abum</button>
+  </form>
 </div> 

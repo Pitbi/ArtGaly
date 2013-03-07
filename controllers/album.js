@@ -49,7 +49,6 @@ AlbumController.prototype.PUT = function () {
 
 AlbumController.prototype.DELETE = function () {
   var self = this;
-  console.log(self.req.body.album.id);
   Album.findById(self.req.body.album.id, function (err, album) {
     if (err)
       throw err;

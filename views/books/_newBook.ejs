@@ -15,6 +15,7 @@
         </div>
       </div>
       <div class="input-append">
+        <a href="#myModal" role="button" class="btn" data-toggle="modal">?</a>
         <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Browse</a>
         <input type="submit" class="btn">
         <a class="action hide-form-btn2 btn btn-danger">Retour</a>
@@ -26,4 +27,20 @@
   <ol class="upload-list-files">
 
   </ol>
+</div>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Chargement d'un lirve</h3>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li>Veuillez charger le fichier <strong>PDF</strong> de votre livre.</li>
+      <li>Le nom du livre doit contenir minimum 3 charactères et maximum 45.</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
 </div>

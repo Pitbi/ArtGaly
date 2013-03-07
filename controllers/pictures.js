@@ -40,8 +40,12 @@ PicturesController.prototype.POST = function () {
 
 PicturesController.prototype.DELETE = function () {
   var self = this;
-  var pictures = self.req.body;
-  console.log(self.req.body);
+  Picture.find({album: undefined}, function(err, pictures) {
+    pictures.forEach(function (picture) {
+      picture.remove();
+    })
+    self.res.redirect("/admin");
+  });
 };
 
 
