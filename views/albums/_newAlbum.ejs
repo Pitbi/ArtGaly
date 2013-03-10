@@ -1,20 +1,22 @@
 <div class="hided-form">
-  <form method="post" action="/albums" class="form-horizontal">
-    <div class="control-group">
-      <label class="control-label" for="inputName">Nom: </label>
-      <div class="controls">
-        <input type="text" value="<%= album.name || '' %>" name="album[name]"></input>
-      </div>
+  <form method="post" action="/albums">   
+    <div>
+      <label for="album[name]">
+        Nom:
+      </label>
+      <input type="text" value="<%= album.name || '' %>" name="album[name]" />
     </div>
-    <div class="control-group">
-      <label class="control-label" for="inputName">Description: </label>
-      <div class="controls">
-        <textarea name="album[description]"><%= album.description || '' %></textarea>
-      </div>
+    <div>
+      <label for="album[desription]">
+        Description:
+      </label>
+      <textarea name="album[description]"><%= album.description || '' %></textarea>
     </div>
-    <div class="control-group">
+    <div class="input-append hided-form-sumbit">
       <input class="btn" type="submit" value="Créer">
-      <a class="btn btn-danger action hide-form-btn">Annuler</a>
+      <a class="btn btn-danger action hide-form-btn">
+        Annuler
+      </a>
     </div>
   </form> 
 </div>

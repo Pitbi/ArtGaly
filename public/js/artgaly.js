@@ -12,12 +12,19 @@ $(function () {
 
   
   $(".delete-album").submit(function(e) {
+    console.log(":)");
     var form = this;
     bootbox.confirm("Etes vous certain de vouloir supprimer cet album?", function(result) {
       if (result) 
         form.submit();
     });
     return false;
+  });
+  console.log(document);
+
+
+  $(".form-upload-files").submit(function(e) {
+    $(".btn-upload").hide();
   });
 
   $('#carousel').elastislide();
