@@ -36,4 +36,16 @@ PictureController.prototype.PUT = function () {
   });
 };
 
+PictureController.prototype.DELETE = function () {
+  var self = this;
+  Picture.findById(self.req.body.picture.id, function (err, picture) {
+    if (err)
+      throw err;
+
+    picture.remove();
+    self.res.redirect('/');
+  });
+};
+
+
 module.exports = PictureController;
