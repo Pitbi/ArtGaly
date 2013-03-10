@@ -20,7 +20,6 @@ $(function () {
     });
     return false;
   });
-  console.log(document);
 
 
   $(".form-upload-files").submit(function(e) {
@@ -54,6 +53,18 @@ $(function () {
   function hideForm2() {
     $('.hided-form2').hide();
     $('.show-form-btn2').show();  
+  }
+
+  $('.hide-upload-files-form').hide();
+  $('.action.show-upload-files-form').click(showUploadForm);
+  $('.action.hide-upload-files-form').click(hideUploadForm);
+  function showUploadForm(){
+    $(".hide-upload-files-form").show();
+    $(".show-upload-files-form").hide();
+  }
+  function hideUploadForm(){
+    $(".hide-upload-files-form").hide();
+    $(".show-upload-files-form").show();
   }
 
   $('input:file').change(

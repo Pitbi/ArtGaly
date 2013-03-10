@@ -274,9 +274,9 @@ body {
 
 .hided-form, .hided-form2 {
   width: 60%;
-  min-width: 180px;
+  min-width: 250px;
   background-color: rgba(113, 120, 119, 0.1);
-  padding: 15px;
+  padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -286,6 +286,7 @@ body {
 
 }
 
+
 .hided-form textarea  {
   width: 100%;
   height: 120px;
@@ -294,7 +295,6 @@ body {
 
 .hided-form-sumbit {
   text-align:center;
-  margin: auto;
 }
 
 .news-list li {
@@ -344,17 +344,3 @@ body {
   color: white;
 }
 
-.bar {
-    width: 300px;
-  }
-  
-  #progress {
-    background: #eee;
-    border: 1px solid #222;
-    margin-top: 20px;
-  }
-  #progressbar {
-    width: 0px;
-    height: 24px;
-    background: #333;
-  }
