@@ -30,6 +30,11 @@
 
 <%- partial ("./_editPicture", {picture: picture}) %>
 
+
+
+
+
+
 <div class="picture-description">
   <% if (picture.description) { %>
     <h4>Description:</h4>
@@ -59,9 +64,8 @@
   </div>
 </div>
 
-
 <div class="row-fluid">
-  <h4><a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a>:</h4>
+  <h4><a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a></h4>
   <ul id="carousel" class="elastislide-list">
     <% for (var i = 0; i < pictures.length; i++) { %>
       <li>
@@ -70,7 +74,5 @@
     <% }; %>
   </ul>
 </div>
-
-
 
 <%- partial ("./_comments", {picture: picture}) %>

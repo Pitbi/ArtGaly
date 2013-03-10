@@ -1,36 +1,51 @@
 <div class="row-fluid">
   <div class="hided-form">
-    <form method="post" action="/picture" class="form-inline">
+    <form method="post" action="/picture">
       <input type="hidden" name="_method" value="PUT">
       <input type="hidden" name="picture[id]" value="<%= picture.id %>">
-      <div class="control-group">
-        <label class="control-label" for="inputName">Nom: </label>
+      <div class="row-fluid">
+        <div class="span6">
+          <label for="picture[name]">
+            Nom
+          </label>
           <input type="text" value="<%= picture.name || '' %>" name="picture[name]"></input>
-        <label class="control-label" for="inputName">Date de création: </label>
-        <input type="date" value="<%= parseRecordFormDate(picture.creationDate) %>" name="picture[creationDate]"><small>(mois/jour/année)</small>
-        <div class="controls">
-          <label class="control-label" for="inputName">Page d'acceuil: </label>
-          <input type="checkbox" name="picture[homePage]" value="true"
-           <% if (picture.homePage) { %>
-             checked
-           <% } %>
-          >
-          <label class="control-label" for="inputName">A vendre: </label>
-          <input type="checkbox" name="picture[toSale]" value="true"
-           <% if (picture.toSale) { %>
-             checked
-           <% } %>
-          >
+          <label for="picture[creationDate]">
+            Date de création
+          </label>
+          <input type="date" value="<%= parseRecordFormDate(picture.creationDate) %>" name="picture[creationDate]" />
+          <small>(mois/jour/année)</small>
+        </div>
+        <div class="span6">
+          <i class="icon-home icon-2x" title="Visible en page d'acceuil">
+            <input type="checkbox" name="picture[homePage]" value="true"
+              <% if (picture.homePage) { %>
+               checked
+              <% } %>
+            >
+          </i>
+            
+          <i class="icon-money icon-2x" title="A vendre">
+            <input type="checkbox" name="picture[toSale]" value="true"
+             <% if (picture.toSale) { %>
+               checked
+             <% } %>
+            >
+          </i>
         </div>
       </div>
-      <div class="control-group">
-        <label class="control-label" for="inputName">Description: </label>
-        <div class="controls">
-          <textarea name="picture[description]"><%= picture.description || '' %></textarea>
-          <input class="btn pull-right" type="submit" value="Modifier">
-          <a class="btn btn-danger action hide-form-btn">Annuler</a>
-        </div>
+      <div>
+        <label class="control-label" for="inputName">Description</label>
+        <textarea name="picture[description]"><%= picture.description || '' %></textarea>
+      </div>    
+      <div class="input-append hided-form-sumbit">
+          <input class="btn" type="submit" value="Modifier">
+          <a class="btn btn-inverse action hide-form-btn">Annuler</a>
       </div>
+    </form>
+    <form method="post" action="/picture" class="delete-picture ">
+      <input type="hidden" name="picture[id]" value="<%= picture.id %>"/>
+      <input type="hidden" name="_method" value="delete"/>
+      <button type="submit" value="" class="btn btn-danger">Supprimer la photo</button>
     </form>
   </div> 
 </div>

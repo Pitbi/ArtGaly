@@ -1,7 +1,5 @@
 <div class="row-fluid">
   <div class="hided-form">
-    <button class="btn action add-news-element">Ajouter un élément</button>
-
     <form method="post" action="/news" class="form-horizontal">
       <div class="control-group">
         <label class="control-label" for="inputName">Titre:</label>
@@ -10,12 +8,17 @@
         </div>
       </div>
       <div class="news-elements">
-        <div class="control-group news-element">
-          <label class="control-label" for="inputName">News:</label>
-          <div class="controls">
-            <input type="text" value="<%= news.title || '' %>" name="news[elements][]"></input>
-          </div>
-        </div>    
+        <div class="span10 control-group news-element">
+          <label class="control-label" for="inputName">
+            News
+          </label>
+          <input type="text" value="<%= news.title || '' %>" name="news[elements][]">
+        </div>
+        <div class="span2">
+          <a class="btn action add-news-element">
+            <i class="icon-plus-sign icon-2x" title="Ajouter un élément à la news"></i>
+          </a>
+        </div>
       </div>
       <div class="input-append">
         <div class="control-group">

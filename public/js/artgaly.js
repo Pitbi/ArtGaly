@@ -12,7 +12,6 @@ $(function () {
 
   
   $(".delete-album").submit(function(e) {
-    console.log(":)");
     var form = this;
     bootbox.confirm("Etes vous certain de vouloir supprimer cet album?", function(result) {
       if (result) 
@@ -20,7 +19,14 @@ $(function () {
     });
     return false;
   });
-
+  $(".delete-picture").submit(function(e) {
+    var form = this;
+    bootbox.confirm("Etes vous certain de vouloir supprimer cette photo?", function(result) {
+      if (result) 
+        form.submit();
+    });
+    return false;
+  });
 
   $(".form-upload-files").submit(function(e) {
     $(".btn-upload").hide();
@@ -60,11 +66,11 @@ $(function () {
   $('.action.hide-upload-files-form').click(hideUploadForm);
   function showUploadForm(){
     $(".hide-upload-files-form").show();
-    $(".show-upload-files-form").hide();
+    $(".upload-pictures-form-add-button").hide();
   }
   function hideUploadForm(){
     $(".hide-upload-files-form").hide();
-    $(".show-upload-files-form").show();
+    $(".upload-pictures-form-add-button").show();
   }
 
   $('input:file').change(

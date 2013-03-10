@@ -4,13 +4,11 @@
     <input type="hidden" name="album[id]" value="<%= album.id %>">
     <div>
       <label for="album[name]">
-        Nom:
+        Nom
       </label>
       <input type="text" value="<%= album.name || '' %>" name="album[name]" />
-    </div>
-    <div>
       <label for="album[description]">
-        Description:
+        Description
       </label>
       <textarea name="album[description]"><%= album.description || '' %></textarea>
     </div>   
@@ -22,12 +20,11 @@
     </div>
   </form>
   <div>
-    <form method="post" action="/album" class="delete-album pull-right">
+    <form method="post" action="/album" class="delete-album">
       <input type="hidden" name="album[id]" value="<%= album.id %>"/>
       <input type="hidden" name="_method" value="delete"/>
       <button type="submit" value="" class="btn btn-danger">Supprimer l'abum</button>
     </form>
   </div>
-
 </div> 
     
