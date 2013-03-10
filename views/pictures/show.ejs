@@ -18,8 +18,8 @@
   <h3>
     <%= picture.name || "Titre non défini" %>
     <small>
-      <% if (picture.creationDate) { %>
-        <%= parseDate(picture.creationDate) %>
+      <% if (picture.album) { %>
+        <a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a>
       <% } %>
     </small>
     <a class="action show-form-btn btn btn-small pull-right">
@@ -32,47 +32,49 @@
 
 
 
-
-
-
-<div class="picture-description">
-  <% if (picture.description) { %>
-    <h4>Description:</h4>
-    <p><%= picture.description %></p>
+<div class="row-fluid">
+  <div class="span9">
+    <div class="picture-description">
+      <% if (picture.description) { %>
+        <h4>Description:</h4>
+        <p><%= picture.description %></p>
+      <% } %>
+    </div>
+    <div class="picture-view">
+      <a href="<%= picture.pathOriginalSize %>" target="_blank">
+        <img src="<%= picture.pathOriginalSize %>" class="picture-view">
+      </a>
+      <span class="pull-left image-move-button">
+        <% if (currentPictures.previous) { %>
+          <a href="/picture/<%= currentPictures.previous %>" class="link-no-style">
+            <i class="icon-circle-arrow-left"></i>
+          </a>
+        <% } %>
+      </span>
+      <span class="pull-right image-move-button">
+        <% if (currentPictures.next) { %>
+          <a href="/picture/<%= currentPictures.next %>" class="link-no-style">
+            <i class="icon-circle-arrow-right"></i>
+          </a>
+        <% } %>
+      </span> 
+    </div>
+  </div>
+  <div class="span3">
+    <ul id="carousel-vertical" class="elastislide-list elastislide-vertical">
+      <% for (var i = 0; i < pictures.length; i++) { %>
+        <li>
+          <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathLittleSize %>" alt="image<%= i %>" /></a>
+        </li>
+      <% }; %>
+    </ul>  
+  </div>
+</div>
+<div class="row-fluid">
+  <a href="#new-comment" class="btn action show-form-btn2">Ajouter un commentaire</a>
+  <% if (picture.toSale) { %>
+    <a href="#sale-proposition" class="btn btn-success">Peinture en vente: faire une proposition</a>
   <% } %>
-</div>
-
-<div class="row-fluid">
-  <div class="span1">
-    <span class="pull-left image-move-button">
-      <% if (currentPictures.previous) { %>
-        <a href="/picture/<%= currentPictures.previous %>" class="">&lsaquo;</a>
-      <% } %>
-    </span>
-  </div>
-  <div class="span9 picture-view">
-    <a href="<%= picture.pathOriginalSize %>" target="_blank">
-      <img src="<%= picture.pathOriginalSize %>" class="picture-view">
-    </a>
-  </div>
-  <div class="span1">
-    <span class="pull-right image-move-button">
-      <% if (currentPictures.next) { %>
-        <a href="/picture/<%= currentPictures.next %>" class="">&rsaquo;</a>
-      <% } %>
-    </span> 
-  </div>
-</div>
-
-<div class="row-fluid">
-  <h4><a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a></h4>
-  <ul id="carousel" class="elastislide-list">
-    <% for (var i = 0; i < pictures.length; i++) { %>
-      <li>
-        <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathLittleSize %>" alt="image<%= i %>" /></a>
-      </li>
-    <% }; %>
-  </ul>
 </div>
 
 <%- partial ("./_comments", {picture: picture}) %>

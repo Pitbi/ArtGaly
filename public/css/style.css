@@ -154,11 +154,13 @@ form {
 
 .picture-view img {
   max-height: 400px;
+  max-width: 500px;
   box-shadow: 0px 0px 25px rgba(0,0,0,.3);
 }
 
 .picture-description {
   margin: auto;
+  min-height: 80px;
   padding: 10px 10px;
   display: inline-block;
 }
@@ -347,4 +349,16 @@ form {
   font-size: 25px;
   padding: 16px 16px;
   color: white;
+}
+
+.elastislide-wrapper nav span {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.link-no-style {
+  color: rgba(0,0,0, 0.6);
+}
+
+.link-no-style:hover {
+  color: rgba(0,0,0, 0.9);
 }

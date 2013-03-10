@@ -4,6 +4,7 @@ $(function () {
   });
   
   $('.action.add-news-element').click(addNewsElement);
+  
   function addNewsElement() {
     var list = $('.news-elements');
     var field = list.find('.news-element:first').clone();
