@@ -1,6 +1,7 @@
-var Book 			= require("../models/book");
-var async   		= require("async");
+var Book 			      = require("../models/book");
+var async   		    = require("async");
 var saveUploadedPdf = require("../services/uploadPdf");
+var requireUser     = require("../services/requireUser");
 
 
 var BooksController = function(req, res, next) {
@@ -22,25 +23,25 @@ BooksController.prototype.GET = function () {
 BooksController.prototype.POST = function() {
 	var self = this;
 	var book = new Book();
-  if (self.req.files.books) {
-  	saveUploadedPdf(self.req.files.books, self.req.body.book, function(err) {
-  		if (err &! err.errors) throw(err);
+  requireUser(self.req, self.res, function () {
+    if (self.req.files.books) {
+    	saveUploadedPdf(self.req.files.books, self.req.body.book, function(err, book) {
+    		if (err &! book.errors) throw(err);
 
-      if (err) {
-        var errors = err.errors;
-        Book.find(function (err, books) {
-          if (err) throw err;
+        if (err) {
+          Book.find(function (err, books) {
+            if (err) throw err;
 
-          book.errors = errors;
-          self.res.render('books/index', {books: books, book: book});
-        });
-      } else {
-  		  self.res.redirect("/books");
-      }
-  	});
-  } else {
-    res.redirect('back');
-  }
+            self.res.render('books/index', {books: books, book: book});
+          });
+        } else {
+    		  self.res.redirect("/books");
+        }
+    	});
+    } else {
+      res.redirect('back');
+    }
+  });
 }
 
 module.exports = BooksController;

@@ -1,4 +1,5 @@
-var News = require("../models/news");
+var News        = require("../models/news");
+var requireUser = require ("../services/requireUser");
 
 var NewsController = function(req, res, next) {
   this.req = req;
@@ -19,11 +20,13 @@ NewsController.prototype.GET = function () {
 NewsController.prototype.POST = function () {
   var self = this;
   
-  var news = new News(self.req.body.news);
-  news.save(function (err) {
-    if (err) throw err;
-    
-    self.res.redirect("/news");
+  requireUser(self.req, self.res, function () {
+    var news = new News(self.req.body.news);
+    news.save(function (err) {
+      if (err) throw err;
+      
+      self.res.redirect("/news");
+    });
   });
 };
 

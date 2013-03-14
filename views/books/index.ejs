@@ -28,6 +28,8 @@
 <% }); %>
 
 
-<div class="row-fluid">
-  <%- partial("books/_newBook", {book: book}) %>
-</div>
+<% if (currentUser) { %>
+  <div class="row-fluid">
+    <%- partial("books/_newBook", {book: book}) %>
+  </div>
+<% } %>

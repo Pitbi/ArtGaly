@@ -1,5 +1,5 @@
-var Picture = require('../models/picture');
-var Album = require('../models/album');
+var Picture     = require("../models/picture");
+var Album       = require("../models/album");
 
 var CommentsController = function(req, res, next) {
   this.res = res;
@@ -9,7 +9,6 @@ var CommentsController = function(req, res, next) {
 
 CommentsController.prototype.POST = function () {
   var self = this;
-  console.log(self.req.body);
   var comment = self.req.body.comment;
   Picture.findById(self.req.body.comment.picture, function (err, picture) {
     picture.comments.push(comment);

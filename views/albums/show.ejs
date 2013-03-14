@@ -14,11 +14,11 @@
 <div class="page-header">
   <h2>
     <%= album.name %>
-    <span class="pull-right">
-      <a class="btn btn-small action show-form-btn">
+    <% if (currentUser) { %>
+      <a class="btn btn-small action show-form-btn pull-right">
         Modifier l'album
       </a>
-    </span>
+    <% } %>
   </h2>
 </div>  
 
@@ -50,12 +50,11 @@
     </li>
   <% }); %>
 </ul>
-       
+      
 
-
-     
-
-<div class="row-fluid">
-  <%- partial ('albums/_addPictureButton', {album: album}) %>
-</div>
+<% if (currentUser) { %>
+  <div class="row-fluid">
+    <%- partial ('albums/_addPictureButton', {album: album}) %>
+  </div>
+<% } %>
 

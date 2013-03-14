@@ -1,0 +1,23 @@
+<div class="hided-form">
+  <form method="post" action="/">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="hidden" name="home[id]" value="<%= home.id %>">
+    <div>
+      <label for="home[text1]">
+        Texte d'acceuil
+      </label>
+      <textarea name="home[text1]" class="big-textarea"><% if (home.text1) { %><%= home.text1 %><% } %></textarea>
+    </div>   
+    <div class="input-append hided-form-sumbit">
+
+      <a href="#modalMarkdownInfo" role="button" class="btn" data-toggle="modal">?</a>
+      <input class="btn" type="submit" value="Modifier">
+      <a class="btn btn-inverse action hide-form-btn">
+        Annuler
+      </a>
+    </div>
+  </form>
+</div> 
+
+<%- partial("./modals/_markdowns") %>
+

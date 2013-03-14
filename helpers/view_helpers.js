@@ -1,4 +1,10 @@
+var markdown = require("markdown").markdown;
+
 module.exports = {
+
+  currentUser: function(req, res) {
+    return req.user;
+  },
 
   parseRecordFormDate: function (req, res) {
     return function (date) {
@@ -52,5 +58,12 @@ module.exports = {
       } 
       return currentPictures;
     }
-  }
+  },
+
+  markdownToHtml: function (req, res) {
+    return function (input) {
+      var output = markdown.toHTML(input);
+      return output;
+    };
+  },
 };

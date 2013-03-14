@@ -42,7 +42,8 @@ form {
 .menu-principal {
   float:right;
   margin-right: 12%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .menu-principal ul {
@@ -67,10 +68,15 @@ form {
   padding: 0 25px;
 }
 
+.carousel-view {
+  width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
 .home-carousel {
   text-align: center;
   padding: 20px 0;
-  float: left;
   margin: 12px;
   background-color: rgba(0, 0, 0, 0.08);
   box-shadow: 0px 0px 25px rgba(0,0,0,.3);
@@ -279,7 +285,7 @@ form {
   border-radius: 2px;
 }
 
-.hided-form, .hided-form2 {
+.hided-form, .hided-form2, .home-form {
   width: 60%;
   min-width: 250px;
   background-color: rgba(113, 120, 119, 0.1);
@@ -296,7 +302,7 @@ form {
 
 .hided-form textarea  {
   width: 90%;
-  height: 120px;
+  height: 220px;
   resize: none;
 }
 

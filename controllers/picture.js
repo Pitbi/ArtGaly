@@ -1,6 +1,7 @@
 var mongoose        = require("mongoose");
 var Album           = require("../models/album");
 var Picture         = require("../models/picture");
+var requireUser     = require ("../services/requireUser");
 
 var PictureController = function(req, res, next) {
   this.res = res;
@@ -26,24 +27,28 @@ PictureController.prototype.GET = function () {
 
 PictureController.prototype.PUT = function () {
   var self = this;
-  var pictureAttributes = self.req.body.picture;
-  if (!pictureAttributes.homePage) {
-    pictureAttributes.homePage = false;
-  }
-  console.log(pictureAttributes);
-  Picture.findByIdAndUpdate(pictureAttributes.id, pictureAttributes, function (err, picture) {
-    self.res.redirect("/picture/" + pictureAttributes.id);
+  requireUser(self.req, self.res, function () {
+    var pictureAttributes = self.req.body.picture;
+    if (!pictureAttributes.homePage) {
+      pictureAttributes.homePage = false;
+    }
+    console.log(pictureAttributes);
+    Picture.findByIdAndUpdate(pictureAttributes.id, pictureAttributes, function (err, picture) {
+      self.res.redirect("/picture/" + pictureAttributes.id);
+    });
   });
 };
 
 PictureController.prototype.DELETE = function () {
   var self = this;
-  Picture.findById(self.req.body.picture.id, function (err, picture) {
-    if (err)
-      throw err;
+  requireUser(self.req, self.res, function () {
+    Picture.findById(self.req.body.picture.id, function (err, picture) {
+      if (err)
+        throw err;
 
-    picture.remove();
-    self.res.redirect('/');
+      picture.remove();
+      self.res.redirect('/');
+    });
   });
 };
 

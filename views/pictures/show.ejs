@@ -22,14 +22,18 @@
         <a href="/album/<%= picture.album.id %>"><%= picture.album.name %></a>
       <% } %>
     </small>
-    <a class="action show-form-btn btn btn-small pull-right">
-      Modifier la photo
-    </a>
+    <% if (currentUser) { %>
+      <a class="action show-form-btn btn btn-small pull-right">
+        Modifier la photo
+      </a>
+    <% } %>
   </h3>
 </div>
 
-<%- partial ("./_editPicture", {picture: picture}) %>
 
+<% if (currentUser) { %>
+  <%- partial ("./_editPicture", {picture: picture}) %>
+<% } %>
 
 
 <div class="row-fluid">

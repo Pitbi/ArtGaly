@@ -1,5 +1,7 @@
 var express       = require("express");
 var mongoose      = require("mongoose");
+var passport      = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 var viewHelpers = require("./helpers/view_helpers");
 
@@ -12,7 +14,9 @@ var PictureController   = require("./controllers/picture");
 var NewsController      = require("./controllers/news");
 var NewController       = require("./controllers/new");
 var BooksController     = require("./controllers/books");
-var CommentsController  = require("./controllers/comments")
+var CommentsController  = require("./controllers/comments");
+var LoginController     = require("./controllers/login");
+var LogoutController     = require("./controllers/logout");
 
 //Mongo/Mongoose
 
@@ -35,7 +39,10 @@ server.configure(function () {
   server.use(express.bodyParser());
   server.use(express.methodOverride());
 	server.use(express.cookieParser());
-  server.use(express.session({secret: "secrettozmozzzzzzzzzzdxzdczdvzdvzdvzs"}));;
+  server.use(express.session({secret: "secrettozmozzzzzzzzzzdxzdczdvzdvzdvzs"}));
+  server.use(passport.initialize());
+  server.use(passport.session());
+  server.use(function (req, res, next) { req.member = req.user; next(); });
   server.use(server.router);
   server.set("view engine", "ejs");
   //server.set("views", __dirname + "/app/views");
@@ -44,6 +51,13 @@ server.configure(function () {
   });
   server.dynamicHelpers(viewHelpers);
 });
+
+
+server.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}));
 
 //HTTP REQUEST
 
@@ -56,7 +70,9 @@ var routes = {
   "/admin"      : AdminController,
   "/news"       : NewsController,
   "/books"      : BooksController,
-  "/comments"   : CommentsController
+  "/comments"   : CommentsController,
+  "/login"      : LoginController,
+  "/logout"     : LogoutController
 };
 
 server.use(function (req, res, next) {

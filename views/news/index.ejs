@@ -1,13 +1,17 @@
 <div class="page-header">
   <h2>
     News
-    <a href="" data-toggle="modal" class="pull-right btn btn-small action show-form-btn">
-      Ajouter une nouvelle
-    </a>
+    <% if (currentUser) { %>
+      <a href="" data-toggle="modal" class="pull-right btn btn-small action show-form-btn">
+        Ajouter une nouvelle
+      </a>
+    <% } %>
   </h2>
 </div>
 
-<%- partial("./_addNews", {news: news}) %>
+<% if (currentUser) { %>
+  <%- partial("./_addNews", {news: news}) %>
+<% } %>
 
 <div class="row-fluid">
   <% news.forEach(function (anew) { %>

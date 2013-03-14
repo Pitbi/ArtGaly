@@ -14,15 +14,20 @@
 <div class="page-header">
   <h2>
     Albums
-    <a class="pull-right btn btn-small action show-form-btn">
-      Ajouter un album
-    </a>
+    <% if (currentUser) { %>
+      <a class="pull-right btn btn-small action show-form-btn">
+        Ajouter un album
+      </a>
+    <% } %>
   </h2>
 </div>
 
-<div class="row-fluid">
-  <%- partial("albums/_newAlbum", {album: album}) %>
-</div>
+
+<% if (currentUser) { %>
+  <div class="row-fluid">
+    <%- partial("albums/_newAlbum", {album: album}) %>
+  </div>
+<% } %>
 
 <% albums.forEach(function (album) { %>
   <div class="album-box">

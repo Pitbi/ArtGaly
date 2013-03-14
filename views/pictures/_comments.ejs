@@ -2,7 +2,7 @@
   <% picture.comments.forEach(function (comment) { %>
     <div class="comment">
       <h5><%= comment.sender %> <small><%= parseDate(comment.date) %> - <%= comment.senderMail %></small></h5>
-      <p><%= comment.message %></p>
+      <p><%- markdownToHtml(comment.message) %></p>
     </div>   
   <% }); %>
 </div>

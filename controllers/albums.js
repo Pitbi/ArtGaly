@@ -1,4 +1,5 @@
-var Album         = require('../models/album');
+var Album         = require("../models/album");
+var requireUser   = require("../services/requireUser");
 
 var AlbumsController = function(req, res, next) {
   this.res = res;
@@ -16,21 +17,23 @@ AlbumsController.prototype.GET = function () {
 
 AlbumsController.prototype.POST = function () {
   var self = this;
-  var album = new Album(self.req.body.album);
-  album.save(function (err) {
-    if (err &! album.errors)
-      throw err;
-    
-    if (err) {
-      Album.find().populate('cover').exec(function (err, albums) {
-        if (err)
-          throw err;
-          
-        self.res.render('albums/index', {album: album, albums: albums});
-      });
-    } else {  
-      self.res.redirect('/albums');
-    }
+  var album = new Album(self.req.body.album);  
+  requireUser(self.req, self.res, function () {
+    album.save(function (err) {
+      if (err &! album.errors)
+        throw err;
+      
+      if (err) {
+        Album.find().populate('cover').exec(function (err, albums) {
+          if (err)
+            throw err;
+            
+          self.res.render('albums/index', {album: album, albums: albums});
+        });
+      } else {  
+        self.res.redirect('/albums');
+      }
+    });
   });
 };
 
