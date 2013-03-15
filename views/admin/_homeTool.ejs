@@ -3,14 +3,16 @@
 	  <h5>Images en page d'acceuil</h5>
 		<ul class="portfolio">
 		  <% pictures.forEach(function (picture) { %>
-		    <li>
-		      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
-		        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
-		      </a>
-		      <% if (picture.name) { %>
-		        <span><%= picture.name %></span>
-		      <% } %>
-		    </li>
+			  <% if (picture.homePage) { %>
+			    <li>
+			      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
+			        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
+			      </a>
+			      <% if (picture.name) { %>
+			        <span><%= picture.name %></span>
+			      <% } %>
+			    </li>
+		   	<% } %>
 		  <% }); %>
 		</ul>
 	</div>

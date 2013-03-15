@@ -1,6 +1,19 @@
 <div class="offers-tool">
 	<div class="row-fluid">
 	  <h5>Offres reçues</h5>
-		TOZ
+		<ul class="portfolio">
+		  <% pictures.forEach(function (picture) { %>
+			  <% if (picture.offers[0]) { %>
+			    <li>
+			      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
+			        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
+			      </a>
+			      <% if (picture.name) { %>
+			        <span><%= picture.name %></span>
+			      <% } %>
+			    </li>
+		   	<% } %>
+		  <% }); %>
+		</ul>
 	</div>
 </div>

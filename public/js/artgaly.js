@@ -95,17 +95,17 @@ $(function () {
     $('.pictures-tool').hide();
     $('.offers-tool').hide();
     $('.home-tool').show();
-  }
+  };
   function showPictureTool() {
     $('.home-tool').hide();
     $('.offers-tool').hide();
     $('.pictures-tool').show();
-  }
+  };
   function showOffersTool() {
     $('.home-tool').hide();
     $('.pictures-tool').hide();
     $('.offers-tool').show();
-  }
+  };
 
   $('input:file').change(
     function() {

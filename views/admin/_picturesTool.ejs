@@ -3,11 +3,6 @@
 	  <h4>Images sans album</h4>
 
 	  <% var picturesId = [] %>
-	  <form method="post" action="/pictures" class="form-horizontal">
-	    <input type="hidden" name="pictures" value="<%= picturesId %>">
-	    <input type="hidden" name="_method" value="DELETE">
-	    <input type="submit" value="Supprimer toutes les photos sans album" class="btn btn-danger">
-	  </form>
 	  <% pictures.forEach(function (picture) { %>
 	    <% console.log(picture); %>
 	    <% if (!picture.album) { %>
@@ -23,4 +18,10 @@
 	    <% } %>
 	  <% }); %>
 	</div>
+	
+  <form method="post" action="/pictures" class="form-horizontal">
+    <input type="hidden" name="pictures" value="<%= picturesId %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Supprimer toutes les photos sans album" class="btn btn-danger">
+  </form>
 </div>
