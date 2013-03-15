@@ -1,0 +1,39 @@
+<div class="hided-form3">
+	<form method="post" action="/offer" class="">
+		<input type="hidden" name="offer[picture]" value="<%= picture.id %>">
+		<div>
+			<label>
+				Nom & Prénom:
+			</label>
+			<input type="text" name="offer[sender]" value="<%= '' %>">
+		</div>
+		<div>
+			<label>
+				Mail:
+			</label>
+			<input type="mail" name="offer[senderMail]" value="<%= '' %>">
+		</div>
+		<div>
+			<label>
+				Numéro de téléphone:
+			</label>	
+			<input type="tel" name="offer[phoneNumber]" value="<%= '' %>">
+		</div>
+		<div>
+			<label>
+				Message:
+			</label>	
+			<textarea name="offer[message]" placeholder="Message personel..."></textarea>
+		</div>
+		<div>
+			<label>
+				Proposition de prix:
+			</label>	
+			<input type="number" name="offer[proposedPrice]" value="<%= '' %>">
+		</div>
+	  <div class="input-append hided-form-sumbit">
+	    <input type="submit" value="envoyer" class="btn">
+	    <a class="action hide-form-btn2 btn btn-danger" name="new-comment">Annuler</a>
+	  </div>
+	</form>
+</div>

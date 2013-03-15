@@ -18,6 +18,7 @@ form {
   border-radius: 6px; -moz-border-radius: 6px;-webkit-border-radius: 6px;
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.9);
+  min-height: 620px;
 }
 
 .header {
@@ -42,8 +43,6 @@ form {
 .menu-principal {
   float:right;
   margin-right: 12%;
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
 .menu-principal ul {
@@ -55,7 +54,7 @@ form {
 }
 
 .menu-principal ul li a {
-  font-size: 18px;
+  font-size: 21px;
   display: block;
   text-align: center;
   color: rgba(255, 255, 255, 1); 
@@ -285,7 +284,7 @@ form {
   border-radius: 2px;
 }
 
-.hided-form, .hided-form2, .home-form {
+.hided-form, .hided-form2, .home-form, .hided-form3 {
   width: 60%;
   min-width: 250px;
   background-color: rgba(113, 120, 119, 0.1);
@@ -300,7 +299,7 @@ form {
 }
 
 
-.hided-form textarea  {
+.hided-form textarea, .hided-form2 textarea, .hided-form3 textarea  {
   width: 90%;
   height: 220px;
   resize: none;
@@ -368,3 +367,36 @@ form {
 .link-no-style:hover {
   color: rgba(0,0,0, 0.9);
 }
+
+.admin-tools {
+  text-align: center;
+}
+
+.admin-tools i {
+  background-color: rgba(12, 12, 12, 0.2);
+  padding: 12px;
+  font-size: 45px;
+ -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 0 2px rgba(0, 0, 0, .15);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 0 2px rgba(0, 0, 0, .15);
+  color: rgba(0,0,0, 0.6);
+  background-image: -moz-linear-gradient(top, #ffffff, #EDEDED);
+  background-image: -webkit-linear-gradient(top, #ffffff, #EDEDED);
+  background-image: -o-linear-gradient(top, #ffffff, #EDEDED);
+  background-repeat: repeat-x;
+}
+
+.admin-tools i:hover {
+  color: rgba(0,0,0, 0.8);
+  background-color: rgba(12, 12, 12, 0.4);
+  background-image: -moz-linear-gradient(top, #ffffff, #D7D7D7);
+  background-image: -webkit-linear-gradient(top, #ffffff, #D7D7D7);
+  background-image: -o-linear-gradient(top, #ffffff, #D7D7D7);
+  background-image: linear-gradient(to bottom, #ffffff, #D7D7D7);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#fee18d', EndColorStr='#fec86c');
+}
+.admin-tools a {
+  text-decoration: none;
+}
+

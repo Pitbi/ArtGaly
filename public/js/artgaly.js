@@ -62,6 +62,18 @@ $(function () {
     $('.show-form-btn2').show();  
   }
 
+  $('.hided-form3').hide();
+  $('.action.show-form-btn3').click(showForm3);
+  $('.action.hide-form-btn3').click(hideForm3);
+  function showForm3() {
+    $('.hided-form3').show();
+    $('.show-form-btn3').hide();
+  }
+  function hideForm3() {
+    $('.hided-form3').hide();
+    $('.show-form-btn3').show();  
+  }
+
   $('.hide-upload-files-form').hide();
   $('.action.show-upload-files-form').click(showUploadForm);
   $('.action.hide-upload-files-form').click(hideUploadForm);
@@ -72,6 +84,27 @@ $(function () {
   function hideUploadForm(){
     $(".hide-upload-files-form").hide();
     $(".upload-pictures-form-add-button").show();
+  }
+
+  $('.pictures-tool').hide();
+  $('.offers-tool').hide();
+  $('.action.show-home-tool').click(showHomeTool);
+  $('.action.show-pictures-tool').click(showPictureTool);
+  $('.action.show-offers-tool').click(showOffersTool);
+  function showHomeTool() {
+    $('.pictures-tool').hide();
+    $('.offers-tool').hide();
+    $('.home-tool').show();
+  }
+  function showPictureTool() {
+    $('.home-tool').hide();
+    $('.offers-tool').hide();
+    $('.pictures-tool').show();
+  }
+  function showOffersTool() {
+    $('.home-tool').hide();
+    $('.pictures-tool').hide();
+    $('.offers-tool').show();
   }
 
   $('input:file').change(

@@ -35,7 +35,6 @@
   <%- partial ("./_editPicture", {picture: picture}) %>
 <% } %>
 
-
 <div class="row-fluid">
   <div class="span9">
     <div class="picture-description">
@@ -74,10 +73,15 @@
     </ul>  
   </div>
 </div>
+
+<% if (picture.toSale) { %>
+  <%- partial ("./_offer", {picture: picture}) %>
+<% } %>
+
 <div class="row-fluid">
   <a href="#new-comment" class="btn action show-form-btn2">Ajouter un commentaire</a>
   <% if (picture.toSale) { %>
-    <a href="#sale-proposition" class="btn btn-success">Peinture en vente: faire une proposition</a>
+    <a href="#sale-proposition" class="btn btn-success action show-form-btn3">Peinture en vente: faire une proposition</a>
   <% } %>
 </div>
 

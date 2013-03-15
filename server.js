@@ -4,6 +4,8 @@ var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var viewHelpers = require("./helpers/view_helpers");
+var config      = require("./config/config");
+console.log(config);
 
 var HomeController      = require("./controllers/home");
 var AdminController     = require("./controllers/admin");
@@ -16,7 +18,8 @@ var NewController       = require("./controllers/new");
 var BooksController     = require("./controllers/books");
 var CommentsController  = require("./controllers/comments");
 var LoginController     = require("./controllers/login");
-var LogoutController     = require("./controllers/logout");
+var LogoutController    = require("./controllers/logout");
+var OfferController     = require("./controllers/offer");
 
 //Mongo/Mongoose
 
@@ -39,7 +42,7 @@ server.configure(function () {
   server.use(express.bodyParser());
   server.use(express.methodOverride());
 	server.use(express.cookieParser());
-  server.use(express.session({secret: "secrettozmozzzzzzzzzzdxzdczdvzdvzdvzs"}));
+  server.use(express.session({store: config.sessions.store, secret: config.sessions.secret}));;
   server.use(passport.initialize());
   server.use(passport.session());
   server.use(function (req, res, next) { req.member = req.user; next(); });
@@ -72,7 +75,8 @@ var routes = {
   "/books"      : BooksController,
   "/comments"   : CommentsController,
   "/login"      : LoginController,
-  "/logout"     : LogoutController
+  "/logout"     : LogoutController,
+  "/offer"      : OfferController
 };
 
 server.use(function (req, res, next) {

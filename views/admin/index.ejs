@@ -3,42 +3,27 @@
 </div>
 
 <div class="row-fluid">
-  <h4>Images en page d'acceuil</h4>
-
-  <% pictures.forEach(function (picture) { %>
-    <% if (picture.homePage) { %>
-      <div class="album-box">
-        <a href="/picture/<%= picture.id %>">
-          
-            <img src="<%= picture.pathLittleSize %>">
-          
-          <%= picture.name %>
-        </a>
-      </div>
-    <% } %>
-  <% }); %>
+  <div class="span8">
+    <div class="pictures-tool">
+      <h4>Gestion des images</h4>
+    </div>
+    <div class="home-tool">
+      <h4>Gestion de la page d'acceuil</h4>
+    </div>
+    <div class="offers-tool">
+      <h4>Gestion des offres reçues</h4>
+    </div>
+  </div>
+  <div class="admin-tools span3 pull-right">
+    <a class="action show-home-tool"><i class="icon-home"></i></a>
+    <a class="action show-pictures-tool"><i class="icon-picture"></i></a>
+    <a class="action show-offers-tool"><i class="icon-money"></i></a>
+  </div>
 </div>
-
 <div class="row-fluid">
-  <h4>Images dans album</h4>
-  <% var picturesId = [] %>
-  <form method="post" action="/pictures" class="form-horizontal">
-    <input type="hidden" name="pictures" value="<%= picturesId %>">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Supprimer toutes les photos sans album" class="btn btn-danger">
-  </form>
-  <% pictures.forEach(function (picture) { %>
-    <% console.log(picture); %>
-    <% if (!picture.album) { %>
-      <% picturesId.push(picture.id); %>
-      <div class="album-box">
-        <a href="/picture/<%= picture.id %>">
-          
-          <img src="<%= picture.pathLittleSize %>">
-          
-          <%= picture.name %>
-        </a>
-      </div>
-    <% } %>
-  <% }); %>
+    <%- partial("./_homeTool", {pictures: pictures}) %>
+    <%- partial("./_picturesTool", {pictures: pictures}) %>
+    <%- partial("./_offersTool", {pictures: pictures}) %>
 </div>
+
+

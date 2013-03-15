@@ -8,11 +8,9 @@
     <form method="post" enctype="multipart/form-data" action="/books" class="form-horizontal" aria-hidden="true">
       <input type="hidden" name="books[book]" value="<%= book.id %>">
       <input id="lefile" class="upload-files" type="file" style="display:none" name="books" accept="application/pdf">
-      <div class="control-group">
-        <label class="control-label" for="inputName">Nom: </label>
-        <div class="controls">
+      <div>
+        <label for="book[name]">Nom: </label>
           <input type="text" value="<%= book.name || '' %>" name="book[name]"></input>
-        </div>
       </div>
       <div class="input-append">
         <a href="#myModal" role="button" class="btn" data-toggle="modal">?</a>
