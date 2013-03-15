@@ -49,7 +49,7 @@ pictureSchema.methods.sendOfferByMail = function(smtpConfig, offer, callback) {
   });
   console.log(offer);
   server.send({
-    text:    "Nouvelle offre pour " + this.name + ". Venant de " + offer.sender + " (" + offer.senderMail + "), consultez votre site pour de plus amples informations.",
+    text:    "Nouvelle offre pour " + this.name + " ("+ offer.proposedPrice +" €). Venant de " + offer.sender + " (" + offer.senderMail + "), consultez votre site pour de plus amples informations.",
     from:    smtpConfig.sender,
     to:      "pierre.biezemans@gmail.com",
     subject: "Envoie d'une offre pour" + offer.name
