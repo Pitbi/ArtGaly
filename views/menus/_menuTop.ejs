@@ -1,12 +1,17 @@
-<div class="menu-principal">
-  <ul>
-	  <li><a href="/">Acceuil</a></li>
-	  <li><a href="/albums">Peintures</a></li>
-	  <li><a href="/books">Livres & nouvelles</a></li>
-	  <li><a href="/news">News</a></li>
-	  <li><a href="#5">Contact</a></li>
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <a class="brand" href="/"><i class="icon-home"></i> Claudine Lux</a>
+    <ul class="nav">
+	  <li><a href="/albums"><i class="icon-picture"></i> Peintures</a></li>
+	  <li><a href="/books"><i class="icon-book"></i> Livres & nouvelles</a></li>
+	  <li><a href="/news"><i class="icon-comment-alt"></i> News</a></li>
+	  <li><a href="#5"><i class="icon-envelope"></i> Contact</a></li>
+    </ul>
 		<% if (currentUser) { %>
-		  <li><a href="/admin">Admin</a></li>
+			<ul class="nav pull-right">
+		  	<li><a href="/admin">Admin<i class="icon-cog"></i></a></li>
+			</ul>
 		<% } %>
-  </ul>
+  </div>
 </div>

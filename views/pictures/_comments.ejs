@@ -1,7 +1,18 @@
 <div class="row-fluid">
   <% picture.comments.forEach(function (comment) { %>
     <div class="comment">
-      <h5><%= comment.sender %> <small><%= parseDate(comment.date) %> - <%= comment.senderMail %></small></h5>
+      <% if (currentUser) { %>    
+        <form method="post" action="/comments" class="delete-comment pull-right">
+          <input type="hidden" name="comment[id]" value="<%= comment.id %>"/>
+          <input type="hidden" name="comment[picture]" value="<%= picture.id %>"/>
+          <input type="hidden" name="_method" value="delete"/>
+          <button type="submit" value="" class="btn btn-small btn-danger">X</button>
+        </form>
+      <% } %>
+      <h5><%= comment.sender %> <small><%= parseDate(comment.date) %>
+        <% if (comment.senderMail && currentUser) { %>
+          - <%= comment.senderMail %></small></h5>
+        <% } %>
       <p><%- markdownToHtml(comment.message) %></p>
     </div>   
   <% }); %>

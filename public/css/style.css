@@ -16,9 +16,13 @@ form {
 .container {
   margin-bottom: 20px;
   border-radius: 6px; -moz-border-radius: 6px;-webkit-border-radius: 6px;
-  padding: 15px;
+  padding: 15px 15px 0 15px;
   background-color: rgba(255, 255, 255, 0.9);
-  min-height: 620px;
+}
+
+footer {
+  margin: 35px -15px 0 -15px;
+  bottom: 0;
 }
 
 .header {
@@ -33,6 +37,13 @@ form {
   color: white;
 }
 
+.navbar-inner {
+  border-radius: 0px; -moz-border-radius: 0px;-webkit-border-radius: 0px;
+}
+
+.navbar-inverse .nav > li > a { 
+  color: white;
+}
 .header h1 {
   text-shadow: rgba(0, 0, 0, 0.2) 1px 1px, gba(0, 0, 0, 0.2) -1px 1px, gba(0, 0, 0, 0.2) -1px -1px, gba(0, 0, 0, 0.2) 1px -1px; 
 }
@@ -68,16 +79,17 @@ form {
 }
 
 .carousel-view {
-  width: 400px;
+  width: 460px;
   margin: auto;
-  text-align: center;
 }
 
 .home-carousel {
   text-align: center;
-  padding: 20px 0;
-  margin: 12px;
-  background-color: rgba(0, 0, 0, 0.08);
+  margin: auto;
+  margin-bottom: 25px;
+  width: 380px;
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.06);
   box-shadow: 0px 0px 25px rgba(0,0,0,.3);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -93,19 +105,14 @@ form {
 #myCarousel img{
   max-width: 375px;
   max-height: 230px;
-  margin-left: 50px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
   margin: auto;
 }
 
-.carousel-control {
-  margin: auto;
-  width: 25px;
-  height: 25px;
+.home-carousel-control a {
+  margin: 0 80px;
   font-size: 22px;
-  line-height: 22px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .profile-picture {
@@ -117,7 +124,6 @@ form {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-}
 }
 
 .upload-list-files {
@@ -210,7 +216,7 @@ form {
 .album-box {
   width: 210px;
   height: 210px;
-  float: left;
+  display: table-cell;
   text-align: center;
   font-size: 18px;
   padding: 10px;
@@ -370,12 +376,13 @@ form {
 
 .admin-tools {
   text-align: center;
+  display: inline-block;
 }
 
 .admin-tools i {
   background-color: rgba(12, 12, 12, 0.2);
   padding: 12px;
-  font-size: 45px;
+  font-size: 22px;
  -moz-border-radius: 4px;
   border-radius: 4px;
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 0 2px rgba(0, 0, 0, .15);
@@ -400,3 +407,14 @@ form {
   text-decoration: none;
 }
 
+.offers {
+  display: table;
+}
+
+.offer-description {
+  display: table-cell;
+  border: 1px solid black;
+  margin-right: 20px;
+  padding: 0 20px 20px 20px;
+  top: -30px;
+}

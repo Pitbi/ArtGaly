@@ -7,10 +7,29 @@ var CommentsController = function(req, res, next) {
   return this;
 };
 
+CommentsController.prototype.DELETE = function () {
+  var self = this;
+  Picture.findById(self.req.body.comment.picture, function (err, picture) {
+    if (err) throw err;
+
+    picture.comments.forEach(function (comment) {
+      if (comment.id == self.req.body.comment.id) {
+        comment.remove();
+      }
+    });
+    picture.save(function (err) { 
+      if (err) throw err;
+
+      self.res.redirect("/picture/" + picture.id);
+    });
+  });  
+}
+
 CommentsController.prototype.POST = function () {
   var self = this;
   var comment = self.req.body.comment;
   Picture.findById(self.req.body.comment.picture, function (err, picture) {
+    if (err) throw err;
     picture.comments.push(comment);
     picture.save(function (err) {
       if (err &! picture.errors) throw err;

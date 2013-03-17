@@ -21,12 +21,19 @@
 
 	</head>
 	<body>
-	  <div class="header">
+		<div class="menu">
+	  <%- partial("menus/_menuTop") %>
+	</div>
+	  <!--<div class="header">
 	    <%- partial("headers/_header") %>
-	    <%- partial("menus/_menuTop") %>
-	  </div>
+	  </div>-->
 	  <div class="container">
 	    <%- body %>
+
+	    
+      <footer class="modal-footer">
+        © Copyright Claudine Lux 2012. All rights reserved.
+      </footer>
 	  </div>
 	</body>
 </html>

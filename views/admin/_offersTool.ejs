@@ -1,19 +1,30 @@
 <div class="offers-tool">
 	<div class="row-fluid">
 	  <h5>Offres reçues</h5>
-		<ul class="portfolio">
 		  <% pictures.forEach(function (picture) { %>
 			  <% if (picture.offers[0]) { %>
-			    <li>
+			    <div class="offers">
 			      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
 			        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
 			      </a>
+
+			      <% picture.offers.forEach(function (offer) { %>
+				      <div class="offer-description">
+				      	<h6>Offre</h6>
+				      	<ul class="unstyled">
+					      	<li><%= offer.sender %> (<%= offer.senderMail %>)</li>
+					      	<li><%= offer.proposedPrice %> €</li>
+					      	<% if (offer.message) { %>
+					      		<li><%= offer.message %></li>
+					      	<% } %>
+				    		</ul>
+				    	</div>
+			      <% }); %>
 			      <% if (picture.name) { %>
 			        <span><%= picture.name %></span>
 			      <% } %>
-			    </li>
+			    </div>
 		   	<% } %>
 		  <% }); %>
-		</ul>
 	</div>
 </div>

@@ -11,10 +11,18 @@ $(function () {
     $('.news-elements').append(field);
   }
 
-  
+  console.log(document);
   $(".delete-album").submit(function(e) {
     var form = this;
     bootbox.confirm("Etes vous certain de vouloir supprimer cet album?", function(result) {
+      if (result) 
+        form.submit();
+    });
+    return false;
+  });
+  $(".delete-comment").submit(function(e) {
+    var form = this;
+    bootbox.confirm("Etes vous certain de vouloir supprimer ce commentaire?", function(result) {
       if (result) 
         form.submit();
     });

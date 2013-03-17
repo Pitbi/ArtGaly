@@ -1,5 +1,6 @@
 var Album 		= require("../models/album");
 var Picture 	= require("../models/picture");
+var Home 			= require("../models/home");
 var requireUser = require("../services/requireUser");
 
 var AdminController = function(req, res, next) {
@@ -12,9 +13,17 @@ AdminController.prototype.GET = function () {
 	var self = this;
 	requireUser(self.req, self.res, function() {
 	  Album.find().populate("cover").exec(function (err, albums) {
-	    Picture.find().exec(function (err, pictures) {
-	      self.res.render("admin/index", {albums: albums, pictures: pictures});
-	    });
+	  	if (err) throw err;
+
+	  	Home.findOne(function (err, home) {
+	  		if (err) throw err;
+
+		    Picture.find().exec(function (err, pictures) {
+		    	if (err) throw err;
+
+		      self.res.render("admin/index", {albums: albums, pictures: pictures, home: home});
+		    });
+		  });
 	  });
 	});
 };

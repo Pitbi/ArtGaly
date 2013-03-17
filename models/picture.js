@@ -18,10 +18,10 @@ var commentSchema = Schema({
 
 var offerSchema = Schema({
   sender        : {type: String, validate: [/^.{3,25}$/, "Votre nom doit contenir minimum 3 charactères et maximum 25."]},
-  senderMail    : String,
-  message       : {type: String, validate: [/^.{3,}/, "Votre message doit contenir minimum 3 charactères."]},
+  senderMail    : {type: String, validate: [function(value) { return /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z0-9.\-_]{2,}.[a-zA-Z0-9.\-_]{2,}$/.test(value) }, "Nous avons besoin d'une adresse mail valide pour vous répondre."]},
+  message       : String,
   date          : {type: Date, default: Date.now},
-  proposedPrice : Number,
+  proposedPrice : {type: Number, validate: [/^.{1,}$/, "Veuillez introduire un montant pour votre offre."]},
   phoneNumber   : Number
 });
 
