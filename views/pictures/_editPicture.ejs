@@ -16,21 +16,34 @@
           <small>(mois/jour/année)</small>
         </div>
         <div class="span6">
-          <i class="icon-home icon-2x" title="Visible en page d'acceuil">
-            <input type="checkbox" name="picture[homePage]" value="true"
-              <% if (picture.homePage) { %>
-               checked
-              <% } %>
-            >
-          </i>
-            
-          <i class="icon-money icon-2x" title="A vendre">
-            <input type="checkbox" name="picture[toSale]" value="true"
-             <% if (picture.toSale) { %>
-               checked
-             <% } %>
-            >
-          </i>
+          <div>
+            <i class="icon-home icon-2x" title="Visible en page d'acceuil">
+              <input type="checkbox" name="picture[homePage]" value="true"
+                <% if (picture.homePage) { %>
+                 checked
+                <% } %>
+              >
+            </i>
+              
+            <i class="icon-money icon-2x" title="A vendre">
+              <input type="checkbox" name="picture[toSale]" value="true"
+               <% if (picture.toSale) { %>
+                 checked
+               <% } %>
+              >
+            </i>
+          </div>
+          <div>
+            <br><br>
+            <label>
+              Album
+            </label>
+            <select name="picture[album]">
+              <% albums.forEach(function (album) { %>
+                <option value="<%= album.id %>"><%= album.name %></option>
+              <% }); %>
+            </select>
+          </div>  
         </div>
       </div>
       <div>

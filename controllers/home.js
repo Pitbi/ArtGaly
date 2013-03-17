@@ -25,11 +25,34 @@ HomeController.prototype.GET = function () {
 
 HomeController.prototype.PUT = function () {
   var self= this;
+  var attributes = self.req.body.home;
+  console.log(":D", attributes);
   requireUser(self.req, self.res, function () {
-    Home.findByIdAndUpdate(self.req.body.home.id, self.req.body.home, function (err, home) {
+    Home.findById(attributes.id, function (err, home) {
       if (err) throw err;
 
-      self.res.redirect("/");
+      if (attributes.updateText) {
+        home.text1 = attributes.text1;
+      } 
+      if (attributes.updateOptions) {
+        if (attributes.carousel) {
+          home.carousel = true;
+        } else {
+          home.carousel = false;
+        }
+        if (attributes.pictureUpdate) {
+          home.pictureUpdate = true;
+        } else {
+          home.pictureUpdate = false;
+        }
+      }
+
+      home.save(function (err) {
+        if (err) throw err;
+
+        self.res.redirect("back");
+      });
+
     });
   });
 };

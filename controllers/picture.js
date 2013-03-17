@@ -13,15 +13,20 @@ PictureController.prototype.GET = function () {
   var self = this;
   var pictureId = /picture\/(.*)$/.exec(self.req.url);
   Picture.findById(pictureId[1]).populate("album").exec(function (err, picture) {
-    if (err)
-      throw err;
-    
-    Album.findById(picture.album.id).populate("pictures").exec(function (err, album) {    
-    if (err)
-      throw err;
-    
-      self.res.render("pictures/show", {picture: picture, album:album});
-    });  
+    if (err) throw err;
+
+    Album.find().exec(function (err, albums) {
+      if (err) throw err;
+
+      if (picture.album) {
+        Picture.find({'_id': { $in: picture.album.pictures}}, function(err, pictures) {
+          self.res.render("pictures/show", {picture: picture, pictures: pictures, albums: albums})
+        });
+      } else {
+        var pictures = {};
+        self.res.render("pictures/show", {picture: picture, pictures: pictures, albums: albums})
+      }
+    });
   });
 };
 

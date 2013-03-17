@@ -1,10 +1,12 @@
 var mongoose = require("mongoose");
 
 var Schema   = mongoose.Schema;
+
 var homeSchema = new Schema ({
-	text1     			: String,
-	lastPicturesView 	: Boolean,
-	caroussel			: Boolean
+	text1     			   : String,
+	lastPicturesView 	 : Boolean,
+	carousel			     : {type:Boolean, default: true},
+  pictureUpdate      : {type:Boolean, default: true}
 });
 
 var Home = mongoose.model("Home", homeSchema);

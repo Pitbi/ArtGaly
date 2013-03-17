@@ -17,29 +17,29 @@
 <div class="row-fluid">
   <div class="span9">
     <div class="row-fluid">
-      <div class="span12 carousel-view">
-        <% if (pictures[0]) { %>
-          <div class="home-carousel">
-            <div id="myCarousel" class="carousel slide">
-              <div class="carousel-inner">
-                <% for (var i = 0; i < pictures.length; i++) { %>
-                  <% if (i == 0) { %>
-                    <div class="active item">
-                  <% } else { %> 
-                    <div class="item">       
-                  <% } %>   
-                      <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathOriginalSize %>"></img></a>
-                  </div>        
-                <% } %>
+        <div class="span12 carousel-view">
+          <% if (pictures[0] && home.carousel) { %>
+            <div class="home-carousel">
+              <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                  <% for (var i = 0; i < pictures.length; i++) { %>
+                    <% if (i == 0) { %>
+                      <div class="active item">
+                    <% } else { %> 
+                      <div class="item">       
+                    <% } %>   
+                        <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathOriginalSize %>"></img></a>
+                    </div>        
+                  <% } %>
+                </div>
+              </div>
+              <div class="home-carousel-control">
+                <a href="#myCarousel" data-slide="prev"><i class="icon-circle-arrow-left"></i></a>
+                <a href="#myCarousel" data-slide="next"><i class="icon-circle-arrow-right"></i></a>
               </div>
             </div>
-            <div class="home-carousel-control">
-              <a href="#myCarousel" data-slide="prev"><i class="icon-circle-arrow-left"></i></a>
-              <a href="#myCarousel" data-slide="next"><i class="icon-circle-arrow-right"></i></a>
-            </div>
-          </div>
-        <% } %>
-      </div>
+          <% } %>
+        </div>
       <div class="span12">
         <% if (home.text1) { %>
           <%- markdownToHtml(home.text1) %>
@@ -47,7 +47,7 @@
       </div>
     </div>
   </div>
-  <%if (lastAddedPictures[0]) { %>
+  <%if (lastAddedPictures[0] && home.pictureUpdate) { %>
     <div class="span3">
       <ul id="carousel-vertical" class="elastislide-list elastislide-vertical">
           <% for (var i = 0; i < lastAddedPictures.length; i++) { %>
