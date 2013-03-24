@@ -9,12 +9,15 @@
     <small class="offers-tool">
       Gestion des offres reçues
     </small>
-    <div class="admin-tools pull-right">
+    <small class="contacts-tool">
+      Gestion des contacts reçues
+    </small>
+    <span class="admin-tools">
       <a class="action show-home-tool"><i class="icon-home"></i></a>
       <a class="action show-pictures-tool"><i class="icon-picture"></i></a>
       <a class="action show-offers-tool"><i class="icon-money"></i></a>
-      <a class="action show-books-tool"><i class="icon-book"></i></a>
-    </div>
+      <a class="action show-contacts-tool"><i class="icon-envelope"></i></a>
+    </span>
   </h3>
 </div>
 
@@ -28,6 +31,7 @@
     <%- partial("./_homeTool", {pictures: pictures, home: home}) %>
     <%- partial("./_picturesTool", {pictures: pictures, albums: albums}) %>
     <%- partial("./_offersTool", {pictures: pictures}) %>
+    <%- partial("./_contactsTool", {contacts: contacts}) %>
 </div>
 
 

@@ -38,9 +38,13 @@
         <textarea name="comment[message]" placeholder="Message"></textarea>
       </div>
       <div class="input-append hided-form-sumbit">
-        <input type="submit" value="envoyer" class="btn">
+        <a href="#modalMarkdownInfo" role="button" class="btn" data-toggle="modal">?</a>
+        <input type="submit" value="Envoyer" class="btn">
         <a class="action hide-form-btn2 btn btn-danger" name="new-comment">Annuler</a>
       </div>
     </form> 
   </div>
 </div>
+
+
+<%- partial("./modals/_markdowns") %>

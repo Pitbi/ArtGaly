@@ -45,12 +45,21 @@ CommentsController.prototype.POST = function () {
           if (err)
             throw err;
             
-            console.log(picture.errors);
-            self.res.render("pictures/show", {picture: picture, album:album});
+            Album.find(function (err, albums) {
+              if (err) throw err;
+
+              if (picture.album) {
+                Picture.find({'_id': { $in: picture.album.pictures}}, function(err, pictures) {
+                  self.res.render("pictures/show", {picture: picture, pictures: pictures, albums: albums})
+                });
+              } else {
+                var pictures = {};
+                self.res.render("pictures/show", {picture: picture, pictures: pictures, albums: albums})
+              }
+            });
           });  
         });
       } else {
-        console.log(":)");
         self.res.redirect("/picture/" +  picture.id);
       }
     });

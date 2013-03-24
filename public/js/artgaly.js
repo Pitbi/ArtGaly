@@ -11,10 +11,17 @@ $(function () {
     $('.news-elements').append(field);
   }
 
-  console.log(document);
   $(".delete-album").submit(function(e) {
     var form = this;
     bootbox.confirm("Etes vous certain de vouloir supprimer cet album?", function(result) {
+      if (result) 
+        form.submit();
+    });
+    return false;
+  });
+  $(".delete-contact").submit(function(e) {
+    var form = this;
+    bootbox.confirm("Etes vous certain de vouloir supprimer ce contact?", function(result) {
       if (result) 
         form.submit();
     });
@@ -36,7 +43,14 @@ $(function () {
     });
     return false;
   });
-
+  $(".delete-pictures").submit(function(e) {
+    var form = this;
+    bootbox.confirm("Etes vous certain de vouloir supprimer les photos sans albums?", function(result) {
+      if (result) 
+        form.submit();
+    });
+    return false;
+  });
   $(".form-upload-files").submit(function(e) {
     $(".btn-upload").hide();
   });
@@ -96,23 +110,34 @@ $(function () {
 
   $('.pictures-tool').hide();
   $('.offers-tool').hide();
+  $('.contacts-tool').hide();
   $('.action.show-home-tool').click(showHomeTool);
   $('.action.show-pictures-tool').click(showPictureTool);
   $('.action.show-offers-tool').click(showOffersTool);
+  $('.action.show-contacts-tool').click(showContactsTool);
   function showHomeTool() {
     $('.pictures-tool').hide();
     $('.offers-tool').hide();
+  $('.contacts-tool').hide();
     $('.home-tool').show();
   };
   function showPictureTool() {
     $('.home-tool').hide();
     $('.offers-tool').hide();
+  $('.contacts-tool').hide();
     $('.pictures-tool').show();
   };
   function showOffersTool() {
     $('.home-tool').hide();
     $('.pictures-tool').hide();
+    $('.contacts-tool').hide();
     $('.offers-tool').show();
+  };
+  function showContactsTool() {
+    $('.home-tool').hide();
+    $('.pictures-tool').hide();
+    $('.contacts-tool').show();
+    $('.offers-tool').hide();
   };
 
   $('input:file').change(

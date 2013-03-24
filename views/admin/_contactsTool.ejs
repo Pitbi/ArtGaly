@@ -1,0 +1,21 @@
+<div class="contacts-tool">
+<% contacts. forEach(function (contact) { %>
+	<div class="contact-view">
+		<div class="page-header">
+			<h4>
+			<%= contact.sender %> <small><a href="mailto:<%= contact.mail %>"><%= contact.mail %></a> <%= parseDate(contact.date) %></small>
+			      <% if (currentUser) { %>    
+        <form method="post" action="/contact" class="delete-contact pull-right">
+          <input type="hidden" name="contact[id]" value="<%= contact.id %>"/>
+          <input type="hidden" name="_method" value="delete"/>
+          <button type="submit" value="" class="btn btn-small btn-danger">X</button>
+        </form>
+      <% } %>
+			</h4>
+		</div>
+		<div class="contact-message">
+			<%= contact.message %>
+		</div>
+	</div>
+<% }); %>
+</div>

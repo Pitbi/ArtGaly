@@ -39,8 +39,15 @@
               Album
             </label>
             <select name="picture[album]">
+              <% if (picture.album) { %>
+                <option value="<%= picture.album.id %>"><%= picture.album.name %></option>
+              <% } else { %>
+                <option value="">...</option>
+              <% } %>
               <% albums.forEach(function (album) { %>
-                <option value="<%= album.id %>"><%= album.name %></option>
+                <% if (!picture.album || album.id != picture.album.id) { %>
+                  <option value="<%= album.id %>"><%= album.name %></option>
+                <% } %>
               <% }); %>
             </select>
           </div>  

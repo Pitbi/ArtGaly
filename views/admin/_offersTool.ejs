@@ -4,25 +4,26 @@
 		  <% pictures.forEach(function (picture) { %>
 			  <% if (picture.offers[0]) { %>
 			    <div class="offers">
-			      <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
-			        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
-			      </a>
-
+			    	<ul class="portfolio">
+				      <li><a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
+				        <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
+				      </a></li>
+			      </ul>
 			      <% picture.offers.forEach(function (offer) { %>
 				      <div class="offer-description">
-				      	<h6>Offre</h6>
+				      	<div class="page-header">
+				      		<h6><%= offer.sender %> (<%= offer.senderMail %>)
+				      			<span class="pull-right"> Prix proposé: <%= offer.proposedPrice %> €</span>
+				      		</h6>
+				      	</div>
 				      	<ul class="unstyled">
-					      	<li><%= offer.sender %> (<%= offer.senderMail %>)</li>
-					      	<li><%= offer.proposedPrice %> €</li>
+					      	<li></li>
 					      	<% if (offer.message) { %>
 					      		<li><%= offer.message %></li>
 					      	<% } %>
 				    		</ul>
 				    	</div>
 			      <% }); %>
-			      <% if (picture.name) { %>
-			        <span><%= picture.name %></span>
-			      <% } %>
 			    </div>
 		   	<% } %>
 		  <% }); %>

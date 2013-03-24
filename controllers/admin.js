@@ -1,5 +1,6 @@
 var Album 		= require("../models/album");
 var Picture 	= require("../models/picture");
+var Contact 	= require("../models/contact");
 var Home 			= require("../models/home");
 var requireUser = require("../services/requireUser");
 
@@ -21,7 +22,11 @@ AdminController.prototype.GET = function () {
 		    Picture.find().exec(function (err, pictures) {
 		    	if (err) throw err;
 
-		      self.res.render("admin/index", {albums: albums, pictures: pictures, home: home});
+		    	Contact.find().sort({"date": -1}).exec(function (err, contacts) {
+		    		if (err) throw err;
+		    		
+		      	self.res.render("admin/index", {albums: albums, pictures: pictures, home: home, contacts: contacts});
+		      });
 		    });
 		  });
 	  });

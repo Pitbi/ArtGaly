@@ -1,0 +1,42 @@
+<% if (contact.errors) { %>
+  <div class="alert alert-error">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>Erreur(s) lors de l'ajout de votre commentaire:</h4>
+    <ul>
+      <% for (attribute in contact.errors) { %>
+        <li><%= contact.errors[attribute].type %></li>
+      <% }; %>
+    </ul>
+    <small>Veuillez réintroduire votre demande avec les données manquantes.</small>
+  </div>
+<% } %>
+
+
+<div class="page-header">
+	<h3>Contact</h3>
+</div>
+
+<div class="row-fluid">
+	<form method="post" action="/contact">
+		<div>
+			<label>
+				Nom & prénom:
+			</label>
+			<input type="text" name="contact[sender]" value="<%= contact.sender || '' %>">
+		</div>
+		<div>
+			<label>
+				Mail:
+			</label>
+			<input type="text" name="contact[mail]" value="<%= contact.mail || '' %>">
+		</div>
+		<div>
+			<label>
+				Message:
+			</label>
+			<textarea name="contact[message]" class="send-mail"><%= contact.message || '' %></textarea>
+		</div>
+		<div>
+			<input type="submit" value="Envoyer" class="btn">
+		</div>
+</div>

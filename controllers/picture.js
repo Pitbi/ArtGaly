@@ -37,9 +37,72 @@ PictureController.prototype.PUT = function () {
     if (!pictureAttributes.homePage) {
       pictureAttributes.homePage = false;
     }
-    console.log(pictureAttributes);
-    Picture.findByIdAndUpdate(pictureAttributes.id, pictureAttributes, function (err, picture) {
-      self.res.redirect("/picture/" + pictureAttributes.id);
+    if (!pictureAttributes.toSale) {
+      pictureAttributes.toSale = false;
+    }
+    Picture.findByIdAndUpdate(pictureAttributes.id).exec(function (err, picture) {
+      if (err) throw err;
+
+      picture.name = pictureAttributes.name;
+      picture.creationDate = pictureAttributes.creationDate;
+      picture.description = pictureAttributes.description;
+      picture.homePage = pictureAttributes.homePage;
+      picture.toSale = pictureAttributes.toSale;
+      console.log(pictureAttributes);
+      if (!picture.album && pictureAttributes.album) {
+        Album.findById(pictureAttributes.album, function (err, album) {
+          if (err) throw err;
+
+          console.log(album);
+          album.pictures.push(picture.id);
+
+          album.save(function (err) {
+            if (err) throw err;
+
+            picture.album = album.id;
+
+            picture.save(function (err) {
+              if (err) throw err;
+
+              self.res.redirect("/picture/" + pictureAttributes.id);
+            });
+          });
+        });
+      } else if (pictureAttributes.album != picture.album && pictureAttributes.album) {
+        Album.findById(picture.album, function (err, album) {
+          if (err) throw err;
+
+          album.pictures.remove(picture.id);
+          album.save(function (err) {
+            if (err) throw err;
+
+            Album.findById(pictureAttributes.album, function (err, album) {
+              if (err) throw err;
+
+              console.log(album);
+              album.pictures.push(picture.id);
+
+              album.save(function (err) {
+                if (err) throw err;
+
+                picture.album = album.id;
+
+                picture.save(function (err) {
+                  if (err) throw err;
+
+                  self.res.redirect("/picture/" + pictureAttributes.id);
+                });
+              });
+            });
+          })
+        });
+      } else {
+        picture.save(function (err) {
+          if (err) throw err;
+
+          self.res.redirect("/picture/" + pictureAttributes.id);
+        });
+      }
     });
   });
 };
@@ -52,7 +115,7 @@ PictureController.prototype.DELETE = function () {
         throw err;
 
       picture.remove();
-      self.res.redirect('/');
+      self.res.redirect('/admin');
     });
   });
 };

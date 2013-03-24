@@ -193,6 +193,12 @@ footer {
   width: 90%;
 }
 
+.send-mail {
+  width: 98%;
+  height: 120px;
+  resize: none;
+}
+
 .image-move-button {
   font-size: 48px;
   text-decoration: none;
@@ -338,6 +344,7 @@ footer {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+  margin-bottom: 8px;
 }
 
 .book-cover-title {
@@ -377,6 +384,7 @@ footer {
 .admin-tools {
   text-align: center;
   display: inline-block;
+  float: right;
 }
 
 .admin-tools i {
@@ -408,13 +416,29 @@ footer {
 }
 
 .offers {
-  display: table;
+  margin: 10px auto;
 }
 
 .offer-description {
-  display: table-cell;
-  border: 1px solid black;
-  margin-right: 20px;
-  padding: 0 20px 20px 20px;
-  top: -30px;
+  width: 90%;
+  min-height: 120px;
+  padding: 6px 9px;
+  margin: 5px auto; 
+  background-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 25px rgba(0,0,0,.6);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.contact-view {
+  width: 90%;
+  min-height: 120px;
+  padding: 6px 9px;
+  margin: 5px auto; 
+  background-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 0px 25px rgba(0,0,0,.6);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }

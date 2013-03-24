@@ -5,7 +5,6 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var viewHelpers = require("./helpers/view_helpers");
 var config      = require("./config/config");
-console.log(config);
 
 var HomeController      = require("./controllers/home");
 var AdminController     = require("./controllers/admin");
@@ -20,6 +19,7 @@ var CommentsController  = require("./controllers/comments");
 var LoginController     = require("./controllers/login");
 var LogoutController    = require("./controllers/logout");
 var OfferController     = require("./controllers/offer");
+var ContactController   = require("./controllers/contact");
 
 //Mongo/Mongoose
 
@@ -76,7 +76,8 @@ var routes = {
   "/comments"   : CommentsController,
   "/login"      : LoginController,
   "/logout"     : LogoutController,
-  "/offer"      : OfferController
+  "/offer"      : OfferController,
+  "/contact"    : ContactController
 };
 
 server.use(function (req, res, next) {
