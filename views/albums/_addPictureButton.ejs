@@ -1,20 +1,22 @@
-<div class="tools-bar">
-  <div class="upload-pictures-form-add-button">
-    <a class="btn action show-upload-files-form">
-      Ajouter des photos
-    </a>  
-  </div>
-  <div class="hide-upload-files-form">
-    <form method="post" enctype="multipart/form-data" action="/pictures" class="form-horizontal form-upload-files" aria-hidden="true">
-      <input type="hidden" name="pictures[album]" value="<%= album.id %>">
-      <input id="lefile" class="upload-files" type="file" style="display:none" name="pictures" multiple="multiple" accept="image/jpeg, image/png">
-      <div class="input-append btn-upload">
-        <a href="#myModal" role="button" class="btn" data-toggle="modal">?</a>
-        <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Charger</a>
-        <input type="submit" value="Envoyer" class="btn ">
-        <a class="action hide-upload-files-form btn btn-danger">Retour</a>
-      </div>
-    </form>
+<div class="row-fluid">
+  <div class="tools-bar">
+    <div class="upload-pictures-form-add-button">
+      <a class="btn action show-upload-files-form">
+        Ajouter des photos
+      </a>  
+    </div>
+    <div class="hide-upload-files-form">
+      <form method="post" enctype="multipart/form-data" action="/pictures" class="form-horizontal form-upload-files" aria-hidden="true">
+        <input type="hidden" name="pictures[album]" value="<%= album.id %>">
+        <input id="lefile" class="upload-files" type="file" style="display:none" name="pictures" multiple="multiple" accept="image/jpeg, image/png">
+        <div class="input-append btn-upload">
+          <a href="#myModal" role="button" class="btn" data-toggle="modal">?</a>
+          <a class="btn btn-browse" onclick="$('input[id=lefile]').click();">Charger</a>
+          <input type="submit" value="Envoyer" class="btn" />
+          <a class="action hide-upload-files-form btn btn-danger">Retour</a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 <div class="row-fluid">

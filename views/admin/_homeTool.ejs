@@ -1,34 +1,5 @@
 <div class="home-tool">
 	<div class="row-fluid">
-		<h5>Options</h5>
-		<form method="post" action="/" class="form">
-			<input type="hidden" name="home[id]" value="<%= home.id %>">
-			<input type="hidden" name="home[updateOptions]" value="true">
-			<input type="hidden" name="_method" value="PUT">
-			<div>
-				<i class="icon-circle-arrow-left" title="Affichage du carousel.">
-					<i class=" icon-circle-arrow-right" title="Affichage du carousel.">
-        	</i>
-          <input type="checkbox" name="home[carousel]" value="true"
-            <% if (home.carousel) { %>
-             checked
-            <% } %>
-          >
-          </i> <br>
-          <i class=" icon-film" title="Affichage des dernieres peintures ajoutées.">
-            <input type="checkbox" name="home[pictureUpdate]" value="true"
-             <% if (home.pictureUpdate) { %>
-               checked
-             <% } %>
-            >
-          </i>
-			</div>
-			<div>
-				<input type="submit" value="Modifier" class="btn">
-			</div>
-		</form>
-	</div>
-	<div class="row-fluid">
 	  <h5>
 	  	Images en page d'acceuil
 	  	<small>
@@ -50,19 +21,19 @@
 		  <% }); %>
 		</ul>
 	</div>
-	<div class="row-fluid">
-		<h5>
-			Texte d'acceuil
-			<small>
-				Rendez-vous sur la page d'acceuil pour modifier le text.
-			</small>
-		</h5>
-		<% if (home.text1) { %>
+	<% if (home.text1) { %>
+		<div class="row-fluid">
+			<h5>
+				Texte d'acceuil
+				<small>
+					Rendez-vous sur la page d'acceuil pour modifier le text.
+				</small>
+			</h5>
 			<div class="row-fluid">
 				<div class="well">
 					<%- markdownToHtml(home.text1) %>
 				</div>
-			</div>
-		<% } %> 	 
-	</div>
+			</div>	 
+		</div>
+	<% } %>
 </div>

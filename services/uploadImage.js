@@ -14,20 +14,22 @@ var saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId,
     height: 135,
     quality: 1,
     gravity: "North"
-  }, function(err, stdout, stderr){
-    picture.pathLittleSize    = picturePathAttribute.pathLittleSize;
-    picture.pathOriginalSize  = picturePathAttribute.pathOriginalSize;
-    picture.extenstion        = picturePathAttribute.extension;
-    picture.album             = albumId;
-    picture.save(function (err) {
-      if (err) return callback(err);
-         
-      fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputOriginalSizePath, function (err) {
+  }, function(err, stdout, stderr) {
+    Album.addPicture(albumId, picture.id, function (err, album) {
+      if (err) callback(err);   
+
+      picture.pathLittleSize    = picturePathAttribute.pathLittleSize;
+      picture.pathOriginalSize  = picturePathAttribute.pathOriginalSize;
+      picture.extenstion        = picturePathAttribute.extension;
+      picture.album             = albumId;
+      picture.albumIndex        = album.pictures.length;
+      picture.save(function (err) {
         if (err) return callback(err);
-        
-        Album.addPicture(albumId, picture.id, function (err) {
-         if (err) callback(err);       
-           callback();
+           
+        fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputOriginalSizePath, function (err) {
+          if (err) return callback(err);
+          
+             callback();
         });
       });
     });

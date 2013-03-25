@@ -23,6 +23,7 @@ albumSchema.pre('remove', true, function (next, done) {
     
     async.forEachSeries(pictures, function (picture, callback) {
       picture.album = null;
+      picture.albumIndex = 0;
       picture.save(function (err) {
         if (err) return callback(err);
         
@@ -44,7 +45,7 @@ Album.addPicture = function addPicture(albumId, pictureId, callback) {
     album.save(function (err) {
       if (err) return callback(err);
       
-      callback();
+      callback(null, album);
     });
   });
 };

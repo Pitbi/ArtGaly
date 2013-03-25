@@ -32,6 +32,7 @@ var pictureSchema = new Schema ({
 	pathLittleSize  : String,
 	extension       : String,
 	album           : {type: Schema.ObjectId, ref: "Album"},
+  albumIndex      : Number,
 	description     : String,
 	creationDate    : Date,
   toSale          : Boolean,
@@ -47,7 +48,6 @@ pictureSchema.methods.sendOfferByMail = function(smtpConfig, offer, callback) {
     host: smtpConfig.host,
     ssl: true
   });
-  console.log(offer);
   server.send({
     text:    "Nouvelle offre pour " + this.name + " ("+ offer.proposedPrice +" €). Venant de " + offer.sender + " (" + offer.senderMail + "), consultez votre site pour de plus amples informations.",
     from:    smtpConfig.sender,

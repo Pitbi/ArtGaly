@@ -60,6 +60,19 @@ module.exports = {
     }
   },
 
+  sortPictureByAlbumIndex: function (req, res) {
+    return function sortPictureByAlbumIndex(array) {
+      array.sort(function arraySort(a,b) {
+        if (a.albumIndex < b.albumIndex)
+          return -1;
+        if (a.albumIndex > b.albumIndex)
+          return 1;
+        return 0;
+      });
+      return array;
+    }
+  },
+
   markdownToHtml: function (req, res) {
     return function (input) {
       var output = markdown.toHTML(input);
