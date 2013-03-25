@@ -20,14 +20,17 @@
       </a>
     <% } %>
   </h2>
-</div>  
+</div>
+
+<% var sortedPictures = sortPictureByAlbumIndex(album.pictures); %>  
 
 <%- partial("albums/_editAlbum", {album: album}) %>
 
 <p><%= album.description %></p>
 
 <ul class="portfolio">
-  <% album.pictures.forEach(function (picture) { %>
+  <% for (var i = 0; i < sortedPictures.length; i++) { %>
+  <% var picture = sortedPictures[i] %>
     <li>
       <% if (currentUser) { %>
         <div class="portfolio-cover">
@@ -41,16 +44,37 @@
                 <input type="image" name="submit" src="/pics/favoris_noActive.png"></input>
               </form>
             <% } %>
+            <div class="picture-index-button">
+              <% if(i != 0) { %>
+                <form method="post" action="/picture" class="form-horizontal">
+                  <input type="hidden" name="_method" value="PUT">
+                  <input type="hidden" name="picture[oldAlbumIndex]" value="<%= picture.albumIndex %>">
+                  <input type="hidden" name="picture[albumIndex]" value="<%= picture.albumIndex - 1 %>">
+                  <input type="hidden" name="picture[id]" value="<%= picture.id %>">
+                  <button type="send" class="btn-change-picture-index"><i class="icon-arrow-left"></i></button>
+                </form>
+              <% } %>
+              <% if (i != sortedPictures.length - 1) { %>
+                <form method="post" action="/picture" class="form-horizontal">
+                  <input type="hidden" name="_method" value="PUT">
+                  <input type="hidden" name="picture[oldAlbumIndex]" value="<%= picture.albumIndex %>">
+                  <input type="hidden" name="picture[albumIndex]" value="<%= picture.albumIndex + 1 %>">
+                  <input type="hidden" name="picture[id]" value="<%= picture.id %>">
+                  <button type="send" class="btn-change-picture-index"><i class="icon-arrow-right"></i></button>
+                </form>
+              <% } %>
+            </div>
         </div>
       <% } %>
       <a href="/picture/<%= picture.id %>" title="<%= picture.name || '' %>">
         <img src="<%= picture.pathLittleSize %>" alt="<%= picture.name || '' %>" />
       </a>
+      <%= picture.albumIndex %>
       <% if (picture.name) { %>
         <span><%= picture.name %></span>
       <% } %>
     </li>
-  <% }); %>
+  <% }; %>
 </ul>
       
 

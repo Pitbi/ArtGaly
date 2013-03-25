@@ -283,6 +283,14 @@ footer {
   position: absolute;
 }
 
+.portfolio-cover form {
+  display: inline;
+}
+
+.picture-index-button {
+  display: inline;
+}
+
 .little-picture {
   display: inline-block;
   position: relative;
@@ -441,4 +449,14 @@ footer {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+
+.btn-change-picture-index {
+  background: none;
+  border: none;
+}
+
+.btn-change-picture-index:hover {
+  background: none;
+  border: none;
 }

@@ -58,7 +58,9 @@ AlbumController.prototype.DELETE = function () {
         throw err;
       
       album.remove();
-      self.res.redirect('/albums');
+      setTimeout(function(){
+        self.res.redirect('/albums')
+      },1000);
     });
   });
 };

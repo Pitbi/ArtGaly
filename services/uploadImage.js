@@ -18,6 +18,7 @@ var saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId,
     Album.addPicture(albumId, picture.id, function (err, album) {
       if (err) callback(err);   
 
+      console.log(album.pictures.length);
       picture.pathLittleSize    = picturePathAttribute.pathLittleSize;
       picture.pathOriginalSize  = picturePathAttribute.pathOriginalSize;
       picture.extenstion        = picturePathAttribute.extension;
