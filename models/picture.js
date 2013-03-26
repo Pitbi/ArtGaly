@@ -41,20 +41,6 @@ var pictureSchema = new Schema ({
   offers          : [offerSchema]
 });
 
-pictureSchema.pre('remove', true, function (next, done) {
-  var self = this;
-  Album.findById(self.album).exec(function (err, album) {
-    if (err) return done(err);
-
-    var pictureIndex = album.pictures.indexOf(self.id);
-    delete album.pictures[pictureIndex];
-
-    album.save(function (err) {
-      if (err) return done(err);
-      done();
-    });
-  });
-});
 
 pictureSchema.methods.sendOfferByMail = function(smtpConfig, offer, callback) {
   var server  = email.server.connect({

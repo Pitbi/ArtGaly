@@ -144,24 +144,28 @@ PictureController.prototype.DELETE = function () {
       if (err)
         throw err;
 
-      Album.findById(picture.album).populate("pictures").exec(function (err, album) {
+      var currentPicture = picture;
+      var pictureIndex;
+      Album.findById(currentPicture.album).populate("pictures").exec(function (err, album) {
         if (err) throw err;
-        
-        console.log(album.id);
+
         async.forEachSeries(album.pictures, function (albumPicture, callback) {
-          console.log(albumPicture.albumIndex, picture.albumIndex);
-          if (albumPicture.albumIndex > picture.albumIndex) {
-            console.log(":D");
-            albumPicture.albumIndex = albumPicture.albumIndex -1;
-            albumPicture.save(callback);
-          } else {
-            callback();
+          if (albumPicture.albumIndex > currentPicture.albumIndex) {
+            albumPicture.albumIndex = albumPicture.albumIndex - 1;
+            albumPicture.save();
+          } else if (albumPicture.id == currentPicture.id) {
+             pictureIndex = album.pictures.indexOf(albumPicture);
           }
+          callback();
         }, function (err) {
           if (err) throw (err);
-          
-          picture.remove();
-          self.res.redirect('/admin');
+          album.pictures.splice(pictureIndex, 1);
+          album.save(function (err) {
+            if (err) throw err;
+            
+            picture.remove();
+            self.res.redirect('/admin');
+          })
         });
       });
     });

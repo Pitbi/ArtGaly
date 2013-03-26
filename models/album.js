@@ -19,7 +19,7 @@ albumSchema.pre('remove', true, function (next, done) {
   var self = this;
   var Picture  = require("./picture");
   Picture.find({album: self.id}).exec(function (err, pictures) {
-    if (err) throw err;
+    if (err) return done(err);
     
     async.forEachSeries(pictures, function (picture, callback) {
       picture.album = null;
@@ -30,7 +30,7 @@ albumSchema.pre('remove', true, function (next, done) {
         callback();
       });
     }, function (err) {
-      if (err) done(err);
+      if (err) return done(err);
       
       done();
     });  
