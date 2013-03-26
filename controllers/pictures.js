@@ -4,7 +4,7 @@ var fs                  = require("fs");
 var mongoose            = require("mongoose");
 var Album               = require("../models/album");
 var Picture             = require("../models/picture");
-var saveUploadedPicture = require("../services/uploadImage");
+var saveUploadedPicture = require("../services/uploadPicture");
 var requireUser         = require ("../services/requireUser");
 
 var PicturesController = function(req, res, next) {
