@@ -1,5 +1,6 @@
 var Album   = require("../models/album");
 var Picture = require("../models/picture");
+var async   = require("async")
 
 var updatePicture = function (pictureAttributes, callback) {
   if (!pictureAttributes.homePage) {
@@ -9,6 +10,7 @@ var updatePicture = function (pictureAttributes, callback) {
     pictureAttributes.toSale = false;
   }
 
+  console.log(pictureAttributes);
   Picture.findByIdAndUpdate(pictureAttributes.id).exec(function (err, picture) {
     if (err) return callback(err);
 
@@ -28,7 +30,7 @@ var updatePicture = function (pictureAttributes, callback) {
           if (err) return callback(err);
 
           picture.album = album.id;
-          picture.albumIndex = album.pictures.length +1 ;
+          picture.albumIndex = album.pictures.length;
 
           picture.save(function (err) {
             if (err) return callback(err);
@@ -38,32 +40,50 @@ var updatePicture = function (pictureAttributes, callback) {
         });
       });
     } else if (pictureAttributes.album && pictureAttributes.album != picture.album) {
-      Album.findById(picture.album, function (err, album) {
+      Album.findById(picture.album).populate("pictures").exec(function (err, album) {
         if (err) return callback(err);
 
-        album.pictures.remove(picture.id);
+        var pictureIndex;
+        async.forEachSeries(album.pictures, function (albumPicture, done) {
+        if (albumPicture.albumIndex > picture.albumIndex) {
+          albumPicture.albumIndex -= 1;
+          albumPicture.save();
+        } else if (albumPicture.id == picture.id) {
+          pictureIndex = album.pictures.indexOf(albumPicture);
+        } 
+        done();
+      }, function (err) {
+        if (err) throw err;
+
+        album.pictures.splice(pictureIndex, 0);
         album.save(function (err) {
           if (err) return callback(err);
-
-          Album.findById(pictureAttributes.album, function (err, album) {
-            if (err) return callback(err);
-
-            album.pictures.push(picture.id);
-
+          
+            album.pictures.remove(picture.id);
             album.save(function (err) {
               if (err) return callback(err);
 
-              picture.album = album.id;
-              picture.albumIndex = album.pictures.length + 1;
-
-              picture.save(function (err) {
+              Album.findById(pictureAttributes.album, function (err, album) {
                 if (err) return callback(err);
 
-                callback(null, picture);
+                album.pictures.push(picture.id);
+
+                album.save(function (err) {
+                  if (err) return callback(err);
+
+                  picture.album = album.id;
+                  picture.albumIndex = album.pictures.length;
+
+                  picture.save(function (err) {
+                    if (err) return callback(err);
+
+                    callback(null, picture);
+                  });
+                });
               });
-            });
+            })
           });
-        })
+        });
       });
     } else {
       picture.save(function (err) {
