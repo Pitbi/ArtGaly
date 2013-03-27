@@ -13,6 +13,7 @@
       <textarea name="album[description]"><%= album.description || '' %></textarea>
     </div>   
     <div class="input-append hided-form-sumbit">
+      <a href="#modalMarkdownInfo" role="button" class="btn" data-toggle="modal">?</a>
       <input class="btn" type="submit" value="Modifier">
       <a class="btn btn-inverse action hide-form-btn">
         Annuler
@@ -28,3 +29,4 @@
   </div>
 </div> 
     
+<%- partial("./modals/_markdowns") %>

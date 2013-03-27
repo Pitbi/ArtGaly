@@ -52,7 +52,9 @@
       <ul id="carousel-vertical" class="elastislide-list elastislide-vertical">
           <% for (var i = 0; i < lastAddedPictures.length; i++) { %>
             <li>
-              <a href="/picture/<%= lastAddedPictures[i].id %>"><img src="<%= lastAddedPictures[i].pathLittleSize %>" alt="image<%= i %>" /></a>
+              <a href="/picture/<%= lastAddedPictures[i].id %>">
+                <img src="<%= lastAddedPictures[i].pathLittleSize %>" alt="image<%= i %>" />
+              </a>
             </li>
           <% }; %>
       </ul>

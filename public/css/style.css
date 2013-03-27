@@ -183,6 +183,9 @@ footer {
   padding: 8px;
 }
 
+.comment p {
+  color: black;
+}
 .add-comment textarea {
   width: 90%;
   height: 120px;
@@ -210,8 +213,8 @@ footer {
 }
 
 .tools-bar {
-  margin-top: 20px;
-  float: right;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .modal-gallery {
@@ -239,6 +242,9 @@ footer {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
+}
+.portfolio {
+  margin-top: 6px;
 }
 
 .portfolio li {
