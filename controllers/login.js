@@ -14,20 +14,16 @@ passport.use(new LocalStrategy(
 	    if (!user.validPassword(password)) {
 	      return done(null, false, { message: 'Incorrect password.' });
 	    }
-	    console.log("IN USER", user);
 	    return done(null, user);
 	  });
 	}
 ));
 
 passport.serializeUser(function(user, done) {
-  console.log("Serialll");
-  console.log(user);
   done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
-	console.log("bliiiii", id);
   User.findById(id).exec(function (err, member) {
     done(err, member);
   });

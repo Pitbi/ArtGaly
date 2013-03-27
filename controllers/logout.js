@@ -5,7 +5,6 @@ var LogoutController = function(req, res, next) {
 };
 
 LogoutController.prototype.GET = function () {
-  console.log(":p");
   this.req.logOut();
   this.res.redirect("/");
 };

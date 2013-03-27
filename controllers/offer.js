@@ -11,7 +11,6 @@ var OfferController = function(req, res, next) {
 OfferController.prototype.POST = function () {
 	var self = this;
 	var offer = self.req.body.offer;
-	console.log(":)", offer);
 	Picture.findById(offer.picture).populate("album").exec(function (err, picture) {
 		if (err) throw err;
 
@@ -22,8 +21,13 @@ OfferController.prototype.POST = function () {
 			if (err) {
     		Album.findById(picture.album.id).populate("pictures").exec(function (err, album) {    
     			if (err) throw err;
-    
-      		self.res.render("pictures/show", {picture: picture, album:album});  
+    			
+    			Album.find(function (err ,albums) {
+    				if (err) throw err;
+
+    				var pictures= {};
+      			self.res.render("pictures/show", {picture: picture, album:album, albums: albums, pictures: pictures}); 
+    			}); 
   			});
 			} else {
 				picture.sendOfferByMail(config.smtp, offer, function (err) {

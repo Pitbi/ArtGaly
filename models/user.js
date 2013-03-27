@@ -10,7 +10,6 @@ var userSchema = new Schema ({
 
 userSchema.methods.validPassword = function (password) {
   if (this.password == password) {
-    console.log(":)");
     return true;
   }
   return false;
