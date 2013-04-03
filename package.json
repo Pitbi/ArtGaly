@@ -1,6 +1,7 @@
 {
   "name": "ArtGaly",
-  "version": "0.0.0",
+  "subdomain": "ArtGaly",
+  "version": "0.0.0-8",
   "main": "server.js",
   "dependencies": {
     "express": "~2.5.9",
@@ -13,7 +14,8 @@
     "passport": "~0.1.16",
     "passport-local": "~0.1.6",
     "emailjs": "~0.3.3",
-    "bcrypt": "~0.7.5"
+    "bcrypt": "~0.7.5",
+    "gm": "1.8.2"
   },
   "devDependencies": {},
   "scripts": {
@@ -26,5 +28,8 @@
   },
   "author": "Pierre Biezemans <pierre.biezemans@gmail.com>",
   "license": "BSD",
-  "description": "Racely ========"
+  "description": "Racely ========",
+  "engines": {
+    "node": "0.8.x"
+  }
 }

@@ -23,7 +23,7 @@ var ContactController   = require("./controllers/contact");
 
 //Mongo/Mongoose
 
-var mongoUri = process.env.MONGO_URI || "mongodb://localhost/artgaly";
+var mongoUri = process.env.MONGO_URI || "mongodb://artgaly:vcx522@ds057857.mongolab.com:57857/artgaly" ||"mongodb://localhost/artgaly";
 
 mongoose.connect(mongoUri, function(error) {
   if (error) { throw error; }

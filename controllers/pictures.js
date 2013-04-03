@@ -16,6 +16,7 @@ var PicturesController = function(req, res, next) {
 PicturesController.prototype.POST = function () {
   var self = this;
   requireUser(self.req, self.res, function () {
+    console.log(self.req.files);
     if (self.req.files.pictures[1]) {
       async.forEachSeries(self.req.files.pictures, function (uploadedPicture, callback) {
         saveUploadedPicture(uploadedPicture, self.req.body.pictures.album, function (err) {
@@ -28,7 +29,8 @@ PicturesController.prototype.POST = function () {
         
         self.res.redirect("/album/" + self.req.body.pictures.album);
       });
-    } else if (self.req.files.pictures[0]) {
+    } else if (self.req.files.pictures.size > 0) {
+      console.log(":)");
       saveUploadedPicture(self.req.files.pictures, self.req.body.pictures.album, function(err) {
         if (err) throw err;
           

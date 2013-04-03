@@ -5,7 +5,7 @@ var Schema   = mongoose.Schema;
 var contactSchema = new Schema ({
 	sender    : {type: String, validate: [/^.{3,45}$/, "Votre nom doit contenir minimum 3 charactères et maximum 45."]},
 	mail    	: {type: String, validate: [function(value) { return /^[a-zA-Z0-9.\-_]{2,}@[a-zA-Z0-9.\-_]{2,}.[a-zA-Z0-9.\-_]{2,}$/.test(value) }, "Svp, ajoutez une adresse mail correct (ex: john@example.com)"]},
-	message   : {type: String, validate: [/^.{3,}$/, "Le message doit contenir minimum 3 charactères."]},
+	message   : {type: String, validate: [/^.{3,}/, "Le message doit contenir minimum 3 charactères."]},
 	date 			: {type: Date, default: Date.now}
 });
 

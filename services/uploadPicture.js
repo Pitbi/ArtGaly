@@ -1,4 +1,5 @@
 var im       = require("imagemagick");
+var gm       = require("gm");
 var fs       = require("fs"); 
 
 var Picture         = require("../models/picture");
@@ -18,7 +19,6 @@ var saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId,
     Album.addPicture(albumId, picture.id, function (err, album) {
       if (err) callback(err);   
 
-      console.log(album.pictures.length);
       picture.pathLittleSize    = picturePathAttribute.pathLittleSize;
       picture.pathOriginalSize  = picturePathAttribute.pathOriginalSize;
       picture.extenstion        = picturePathAttribute.extension;
@@ -30,7 +30,12 @@ var saveUploadedPicture = function saveUploadedPicture(uploadedPicture, albumId,
         fs.rename(picturePathAttribute.uploadPath, picturePathAttribute.outputOriginalSizePath, function (err) {
           if (err) return callback(err);
           
-             callback();
+          gm(picturePathAttribute.outputOriginalSizePath).drawText(50, 200, "claudinelux.fr", ["SouthWest"]).fontSize(80).write(picturePathAttribute.outputOriginalSizePath, function (err) {
+            if (err) return callback(err);
+
+            console.log(":)");
+            callback();
+          });
         });
       });
     });
