@@ -22,6 +22,26 @@ module.exports = {
       }
     }
   },
+
+  cloudinaryLittleSize: function (req, res) {
+    return function (id) {
+      var url;
+      if (id) {
+        url = "http://res.cloudinary.com/artgaly/image/upload/w_190,h_135,c_scale,g_north/" + id + ".jpg"; 
+      }
+      return url;
+    }
+  },
+  cloudinaryOriginalSize: function (req, res) {
+    return function (id) {
+      var url;
+      if (id) {
+        url = "http://res.cloudinary.com/artgaly/image/upload/" + id + ".jpg"; 
+      }
+      return url;
+    }
+  },
+
   parseDate: function (req, res) {
     return function (date) {
       if (date) {

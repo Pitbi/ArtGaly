@@ -28,7 +28,7 @@
                     <% } else { %> 
                       <div class="item">       
                     <% } %>   
-                        <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathOriginalSize %>"></img></a>
+                        <a href="/picture/<%= pictures[i].id %>"><img src="<%= cloudinaryOriginalSize(pictures[i].cloudinaryId) %>"></img></a>
                     </div>        
                   <% } %>
                 </div>
@@ -53,7 +53,7 @@
           <% for (var i = 0; i < lastAddedPictures.length; i++) { %>
             <li>
               <a href="/picture/<%= lastAddedPictures[i].id %>">
-                <img src="<%= lastAddedPictures[i].pathLittleSize %>" alt="image<%= i %>" />
+                <img src="<%= cloudinaryLittleSize(lastAddedPictures[i].cloudinaryId) %>" alt="image<%= i %>" />
               </a>
             </li>
           <% }; %>

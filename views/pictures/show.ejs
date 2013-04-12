@@ -44,8 +44,8 @@
     </div>
     
     <div class="picture-view">
-      <a href="<%= picture.pathOriginalSize %>" target="_blank">
-        <img src="<%= picture.pathOriginalSize %>" class="picture-view">
+      <a href="<%= cloudinaryOriginalSize(picture.cloudinaryId) %>" target="_blank">
+        <img src="<%= cloudinaryOriginalSize(picture.cloudinaryId) %>" class="picture-view">
       </a>
       <span class="pull-left image-move-button">
         <% if (currentPictures.previous) { %>
@@ -67,7 +67,7 @@
     <ul id="carousel-vertical" class="elastislide-list elastislide-vertical">
       <% for (var i = 0; i < pictures.length; i++) { %>
         <li>
-          <a href="/picture/<%= pictures[i].id %>"><img src="<%= pictures[i].pathLittleSize %>" alt="image<%= i %>" /></a>
+          <a href="/picture/<%= pictures[i].id %>"><img src="<%= cloudinaryLittleSize(pictures[i].cloudinaryId) %>" alt="image<%= i %>" /></a>
         </li>
       <% }; %>
     </ul>  

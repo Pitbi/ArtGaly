@@ -38,7 +38,8 @@ var pictureSchema = new Schema ({
   toSale          : Boolean,
 	uploadDate      : {type: Date, default: Date.now},
   comments        : [commentSchema],
-  offers          : [offerSchema]
+  offers          : [offerSchema],
+  cloudinaryId    : String
 });
 
 
