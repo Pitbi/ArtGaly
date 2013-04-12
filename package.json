@@ -1,7 +1,7 @@
 {
   "name": "ArtGaly",
   "subdomain": "ArtGaly",
-  "version": "0.0.0-8",
+  "version": "0.0.0-9",
   "main": "server.js",
   "dependencies": {
     "express": "~2.5.9",
